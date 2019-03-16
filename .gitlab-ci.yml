@@ -29,9 +29,9 @@ deploy_dev:
  - gem install dpl
  - dpl --provider=heroku --app=best-dinner-back --api-key='ea514855-1748-4c23-901b-2cca131a5a56'
  environment:
- name: dev
- url: https://best-dinner-back.herokuapp.com/
- only:
- - master
- tags:
- - docker
+    name: dev
+    url: https://best-dinner-back.herokuapp.com/
+    only:
+    - master
+    tags:
+    - docker
