@@ -31,7 +31,7 @@ deploy_dev:
  environment:
     name: dev
     url: https://best-dinner-back.herokuapp.com/
-only:
-- master
-tags:
-- docker
+ only:
+ - master
+ tags:
+ - docker
