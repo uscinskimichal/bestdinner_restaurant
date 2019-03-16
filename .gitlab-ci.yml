@@ -10,11 +10,28 @@ cache:
  
 stages:
  - build
+ - deploy
 
 build:
  stage: build
  image: maven:3.3.9-jdk-8
  script:
  - mvn clean package
+ tags:
+ - docker
+ 
+deploy_dev:
+ stage: deploy
+ image: ruby:2.3
+ script:
+ - apt-get update -qy
+ - apt-get install -y ruby-dev
+ - gem install dpl
+ - dpl --provider=heroku --app=vel-ci-api-dev --api-key=ea514855-1748-4c23-901b-2cca131a5a56
+ environment:
+ name: dev
+ url: https://best-dinner-back.herokuapp.com/
+ only:
+ - master
  tags:
  - docker
