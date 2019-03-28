@@ -4,19 +4,16 @@ pipeline {
   stages{
     stage('Build'){
       steps{
-        echo 'Building'
+        echo "Bulding starts..."
+        sh 'mvn clean package'
+        echo "Bulding finished..."
+      }
+      post {
+        success{
+          echo "Now archiving..."
+          archiveArtifacts artifacts: '**/target/*.jar'
+        }
       }
     }
-    stage('Test'){
-      steps{
-        echo 'Test'
-      }
-    }
-    stage('Deploy'){
-      steps{
-        echo 'Deploy'
-      }
-    }
-  
   }
 }
