@@ -17,9 +17,7 @@ pipeline {
     }
     stage('Static Code Test'){
       steps{
-        echo "Run static code tests..."
-        sh 'checkstyle:checkstyle'
-        echo "Run static code tests end."
+        build job: 'static-analysis'
       }
     }
   }
