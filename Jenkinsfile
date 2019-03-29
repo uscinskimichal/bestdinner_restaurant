@@ -20,5 +20,13 @@ pipeline {
         build job: 'static-analysis'
       }
     }
+    stage('Deploy to staging'){
+      steps{
+      sh 'apt-get update -qy'
+      sh 'apt-get install -y ruby-dev'
+      sh 'gem install dpl'
+      sh 'dpl --provider=heroku --app=best-dinner-back --api-key='ea514855-1748-4c23-901b-2cca131a5a56''
+      }
+    }
   }
 }
