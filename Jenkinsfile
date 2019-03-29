@@ -22,10 +22,10 @@ pipeline {
     }
     stage('Deploy to staging'){
       steps{
-      sh 'apt-get update -qy'
-      sh 'apt-get install -y ruby-dev'
-      sh 'gem install dpl'
-      sh 'dpl --provider=heroku --app=best-dinner-back --api-key=\'ea514855-1748-4c23-901b-2cca131a5a56\''
+      sh 'sudo apt-get update -qy'
+      sh 'sudo apt-get install -y ruby-dev'
+      sh 'sudo gem install dpl'
+      sh 'sudo dpl --provider=heroku --app=best-dinner-back --api-key=\'ea514855-1748-4c23-901b-2cca131a5a56\''
       }
     }
   }
