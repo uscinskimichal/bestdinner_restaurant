@@ -19,7 +19,7 @@ pipeline {
         }
       }
     }
-    parallel{
+
       stage('Static Code Test'){
         steps{
           build job: 'static-analysis'
@@ -30,7 +30,7 @@ pipeline {
           build job: 'deploy-to-staging'
           }
         }
-    }
+
 
     stage('Deploy to prod'){
         steps{
