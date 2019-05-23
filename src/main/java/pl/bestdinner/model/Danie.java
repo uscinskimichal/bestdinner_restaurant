@@ -1,7 +1,9 @@
 package pl.bestdinner.model;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -23,27 +25,52 @@ public class Danie {
     @Column(name = "Zdjecie", columnDefinition = "VARCHAR(1024)", nullable = false)
     private String zdjecie;
 
+
     @OneToMany(mappedBy = "danie")
     private Set<SkladnikDania> skladnikiDania;
+
 
     @OneToMany(mappedBy = "danie")
     private Set<DanieZmienione> daniaZmienione;
 
+
     @OneToMany(mappedBy = "danie")
     private Set<ElementZamowienia> elementyZamowienia;
 
-    public JSONObject toJSONObject() {
-        JSONObject object = new JSONObject();
-        JSONArray listaSkladnikow = new JSONArray();
+    public int getId_Danie() {
+        return id_Danie;
+    }
 
-        for(SkladnikDania sd : skladnikiDania) {
-            listaSkladnikow.put(sd.getJSONObject());
-        }
+    public void setId_Danie(int id_Danie) {
+        this.id_Danie = id_Danie;
+    }
 
-        object.put("Nazwa", nazwa);
-        object.put("Cena", cena);
-        object.put("ListaSkladnikow", listaSkladnikow);
+    public String getNazwa() {
+        return nazwa;
+    }
 
-        return object;
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
+
+    public float getCena() {
+        return cena;
+    }
+
+    public void setCena(float cena) {
+        this.cena = cena;
+    }
+
+    public String getZdjecie() {
+        return zdjecie;
+    }
+
+    public void setZdjecie(String zdjecie) {
+        this.zdjecie = zdjecie;
+    }
+
+
+    public Set<SkladnikDania> getSkladnikiDania() {
+        return skladnikiDania;
     }
 }

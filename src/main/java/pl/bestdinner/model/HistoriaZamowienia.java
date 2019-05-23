@@ -1,5 +1,9 @@
 package pl.bestdinner.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -17,6 +21,7 @@ public class HistoriaZamowienia {
     private String status;
 
     @ManyToOne
+
     @JoinColumn(name = "ID_Pracownik", nullable = false)
     private Pracownik pracownik;
 
@@ -24,5 +29,28 @@ public class HistoriaZamowienia {
     @JoinColumn(name = "ID_Zamowienie", nullable = false)
     private Zamowienie zamowienie;
 
+    public int getId_HistoriaStatusu() {
+        return id_HistoriaStatusu;
+    }
+
+    public void setId_HistoriaStatusu(int id_HistoriaStatusu) {
+        this.id_HistoriaStatusu = id_HistoriaStatusu;
+    }
+
+    public Timestamp getData() {
+        return data;
+    }
+
+    public void setData(Timestamp data) {
+        this.data = data;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
 }

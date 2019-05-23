@@ -1,5 +1,9 @@
 package pl.bestdinner.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -20,5 +24,21 @@ public class ElementZamowieniaMagazynowego {
     @ManyToOne
     @JoinColumn(name = "ID_ZamowienieMagazynowe", nullable = false)
     private ZamowienieMagazynowe zamowienieMagazynowe;
+
+    public int getId_ElementZamowieniaMagazynowego() {
+        return id_ElementZamowieniaMagazynowego;
+    }
+
+    public void setId_ElementZamowieniaMagazynowego(int id_ElementZamowieniaMagazynowego) {
+        this.id_ElementZamowieniaMagazynowego = id_ElementZamowieniaMagazynowego;
+    }
+
+    public int getIloscMagazyn() {
+        return iloscMagazyn;
+    }
+
+    public void setIloscMagazyn(int iloscMagazyn) {
+        this.iloscMagazyn = iloscMagazyn;
+    }
 
 }
