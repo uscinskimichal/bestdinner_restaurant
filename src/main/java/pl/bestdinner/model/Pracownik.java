@@ -106,5 +106,7 @@ public class Pracownik {
         this.rola = rola;
     }
 
-
+    public Adres getAdres() {
+        return adres;
+    }
 }

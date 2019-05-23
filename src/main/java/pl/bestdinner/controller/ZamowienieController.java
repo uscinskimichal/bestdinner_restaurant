@@ -3,7 +3,7 @@ package pl.bestdinner.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pl.bestdinner.service.ZamowienieRepositoryService;
+import pl.bestdinner.service.ZamowienieRepositoryImpl;
 
 import java.sql.Date;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 public class ZamowienieController {
 
     @Autowired
-    ZamowienieRepositoryService zamowienieRepositoryService;
+    ZamowienieRepositoryImpl zamowienieRepositoryImpl;
 
     @RequestMapping(value = "/zamowienia", method = RequestMethod.GET)
     @ResponseBody
@@ -22,14 +22,14 @@ public class ZamowienieController {
             @RequestParam(required = false) Date dateFrom,
             @RequestParam(required = false) Date dateTo,
             @RequestParam(required = false) String type) {
-        return zamowienieRepositoryService.executeQuery(status, idKlient, dateFrom, dateTo, type);
+        return zamowienieRepositoryImpl.executeQuery(status, idKlient, dateFrom, dateTo, type);
     }
 
 
     @RequestMapping(value = "/zamowienia/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Object getZamowienie(@PathVariable("id") int id) {
-        return zamowienieRepositoryService.findById(id).get();
+        return zamowienieRepositoryImpl.findZamowienieById(id);
     }
 
     @RequestMapping(value = "/zamowienia", method = RequestMethod.POST)

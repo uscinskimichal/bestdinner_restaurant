@@ -22,15 +22,15 @@ public class PracownikController {
 
     @RequestMapping(value = "/pracownicy", method = RequestMethod.GET)
     @ResponseBody
-    public List<Pracownik> getPracownik() {
-        return pracownikRepository.findAll();
+    public List<Object> getPracownik() {
+        return pracownikRepository.findAllPracownik();
     }
 
 
     @RequestMapping(value = "/pracownicy/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Pracownik getPracownik(@PathVariable("id") int id) {
-        return pracownikRepository.findById(id).get();
+    public Object getPracownik(@PathVariable("id") int id) {
+        return pracownikRepository.findPracownik(id);
     }
 
 
