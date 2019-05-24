@@ -14,6 +14,6 @@ public interface PracownikRepository extends JpaRepository<Pracownik, Integer> {
     List<Object> findAllPracownik();
 
     @Query("SELECT p FROM Pracownik p JOIN p.adres a WHERE p.id_Pracownik=?1")
-    List<Object> findPracownik(int idPrac);
+    Object findPracownik(int idPrac);
 
 }

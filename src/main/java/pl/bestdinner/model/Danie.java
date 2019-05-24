@@ -1,9 +1,6 @@
 package pl.bestdinner.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -24,7 +21,6 @@ public class Danie {
 
     @Column(name = "Zdjecie", columnDefinition = "VARCHAR(1024)", nullable = false)
     private String zdjecie;
-
 
     @OneToMany(mappedBy = "danie")
     private Set<SkladnikDania> skladnikiDania;

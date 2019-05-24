@@ -32,4 +32,7 @@ public class SkladnikDania implements Serializable {
         this.ilosc = ilosc;
     }
 
+    public Skladnik getSkladnik() {
+        return skladnik;
+    }
 }

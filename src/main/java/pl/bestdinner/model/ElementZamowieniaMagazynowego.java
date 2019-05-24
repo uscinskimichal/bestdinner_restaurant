@@ -41,4 +41,7 @@ public class ElementZamowieniaMagazynowego {
         this.iloscMagazyn = iloscMagazyn;
     }
 
+    public Skladnik getSkladnik() {
+        return skladnik;
+    }
 }

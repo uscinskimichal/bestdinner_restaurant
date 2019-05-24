@@ -45,7 +45,7 @@ public class ZamowienieRepositoryImpl {
         return zamowienieRepository.findByDataBefore(data);
     };
 
-    public List<Object> findZamowienieById(int id){
+    public Object findZamowienieById(int id){
         return zamowienieRepository.findZamowienieById(id);
     }
 }

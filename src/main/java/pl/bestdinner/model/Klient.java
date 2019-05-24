@@ -100,4 +100,11 @@ public class Klient {
         this.haslo = haslo;
     }
 
+    public Konto getKonto() {
+        return konto;
+    }
+
+    public Adres getAdres() {
+        return adres;
+    }
 }

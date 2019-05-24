@@ -40,4 +40,11 @@ public class ZamowienieMagazynowe {
         this.data = data;
     }
 
+    public Set<ElementZamowieniaMagazynowego> getElementyZamowieniaMagazynowego() {
+        return elementyZamowieniaMagazynowego;
+    }
+
+    public Pracownik getPracownik() {
+        return pracownik;
+    }
 }
