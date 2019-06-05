@@ -10,10 +10,6 @@ build:
   script:
     - mvn package
     - echo "BUILD SUCCESSFULLY DEV - DEVELOP"
-  artifacts:
-    paths:
-      - /builds/best-dinner-management-system-backen/
-    expire_in: 10 mins
   environment:
     name: dev
   only:
@@ -24,6 +20,8 @@ services:
 
 deploy:
   stage: deploy
+  dependency:
+    - build
   script:
     - echo "$REGISTRY_PASSWORD" | docker login registry.gitlab.com -u "$REGISTRY_USER" --password-stdin
     - docker build -t registry.gitlab.com/adriangorski996/best-dinner-management-system-backend .
