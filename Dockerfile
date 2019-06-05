@@ -6,8 +6,8 @@ VOLUME /tmp
 
 EXPOSE 5000
 
-ARG JAR_FILE=target/BestDinner-0.0.1-SNAPSHOT.jar
-ARG CONFIG=src/main/resources
+ARG JAR_FILE=./target/BestDinner-0.0.1-SNAPSHOT.jar
+ARG CONFIG=./src/main/resources
 
 # Add the application's jar to the container
 ADD ${JAR_FILE} BestDinner.jar
