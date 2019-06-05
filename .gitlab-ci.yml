@@ -1,0 +1,35 @@
+image: docker:latest
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  image: maven:3.6.1-jdk-8
+  script:
+    - mvn package
+    - echo "BUILD SUCCESSFULLY DEV - DEVELOP"
+  artifacts:
+    paths:
+      - /builds/best-dinner-management-system-backen/
+    expire_in: 10 mins
+  environment:
+    name: dev
+  only:
+    - develop
+
+services:
+  - docker:dind
+
+deploy:
+  stage: deploy
+  script:
+    - echo "$REGISTRY_PASSWORD" | docker login registry.gitlab.com -u "$REGISTRY_USER" --password-stdin
+    - docker build -t registry.gitlab.com/adriangorski996/best-dinner-management-system-backend .
+    - docker push registry.gitlab.com/adriangorski996/best-dinner-management-system-backend
+    - echo "DEPLOYED SUCCESSFULLY - DEVELOP"
+  environment:
+    name: dev
+  only:
+    - develop
