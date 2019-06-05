@@ -20,7 +20,7 @@ services:
 
 deploy:
   stage: deploy
-  dependency:
+  dependencies:
     - build
   script:
     - echo "$REGISTRY_PASSWORD" | docker login registry.gitlab.com -u "$REGISTRY_USER" --password-stdin
