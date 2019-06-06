@@ -8,9 +8,9 @@ ARG JAR_FILE=target/BestDinner-0.0.1-SNAPSHOT.jar
 ARG CONFIG=src/main/resources
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} csdoc-servic.jar
+ADD ${JAR_FILE} BestDinner.jar
 ADD ${CONFIG} src/main/resources
 
-EXPOSE 8101
+EXPOSE 5000
 
 ENTRYPOINT ["java","-jar","BestDinner-0.0.1-SNAPSHOT.jar"]
