@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface SkladnikRepository extends JpaRepository<Skladnik,Integer> {
 
-    @Query("SELECT s FROM Skladnik s WHERE s.id_skladnik=?1")
-    Object findSkladnik(int id);
+//    @Query("SELECT s FROM Skladnik s WHERE s.id_skladnik=?1")
+//    Object findSkladnik(int id);
 }

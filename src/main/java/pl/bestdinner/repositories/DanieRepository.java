@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface DanieRepository extends JpaRepository<Danie, Integer> {
 
-    @Query("SELECT d FROM Danie d JOIN d.skladnikiDania sd WHERE d.id_Danie=?1")
-    Object findDanie(int id);
+//    @Query("SELECT d FROM Danie d JOIN d.skladnikiDania sd WHERE d.id_Danie=?1")
+//    Object findDanie(int id);
 }

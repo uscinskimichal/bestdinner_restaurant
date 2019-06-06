@@ -1,9 +1,5 @@
 package pl.bestdinner.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -23,7 +19,7 @@ public class Konto {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_Klient")
-    private Klient klient;
+    private Client client;
 
     public int getId_konto() {
         return id_konto;

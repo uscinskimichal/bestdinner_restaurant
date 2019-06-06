@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface StolikRepository extends JpaRepository<Stolik,Integer> {
 
-    @Query("SELECT s FROM Stolik s WHERE s.id_Stolik=?1")
-    Object findStolik(int id);
+//    @Query("SELECT s FROM Stolik s WHERE s.id_Stolik=?1")
+//    Object findStolik(int id);
 }

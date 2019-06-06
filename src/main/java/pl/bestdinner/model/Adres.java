@@ -1,7 +1,5 @@
 package pl.bestdinner.model;
 
-import com.fasterxml.jackson.annotation.*;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -25,8 +23,8 @@ public class Adres {
     @Column(name = "Numer_lokalu", columnDefinition = "VARCHAR(1024)", nullable = false)
     private String numer_lokalu;
 
-    @OneToMany(mappedBy = "adres")
-    private Set<Klient> klienci;
+    @OneToMany(mappedBy = "address")
+    private Set<Client> klienci;
 
     @OneToMany(mappedBy = "adres")
     private Set<Pracownik> pracownicy;

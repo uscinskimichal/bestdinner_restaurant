@@ -1,7 +1,5 @@
 package pl.bestdinner.model;
 
-import com.fasterxml.jackson.annotation.*;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.HashSet;
@@ -39,8 +37,8 @@ public class Zamowienie {
     @OneToMany(mappedBy = "zamowienie")
     private Set<HistoriaZamowienia> historieZamowienia;
 
-    @ManyToMany(mappedBy = "zamowienia")
-    private Set<Klient> klienci = new HashSet<>();
+    @ManyToMany(mappedBy = "orders")
+    private Set<Client> klienci = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "ID_Pracownik", nullable = false)
@@ -91,7 +89,7 @@ public class Zamowienie {
         return adres;
     }
 
-    public Set<Klient> getKlienci() {
+    public Set<Client> getKlienci() {
         return klienci;
     }
 
