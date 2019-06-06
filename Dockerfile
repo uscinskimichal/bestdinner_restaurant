@@ -4,7 +4,7 @@ LABEL maintainer="adriangorski996@gmail.com"
 
 VOLUME /tmp
 
-ARG JAR_FILE=target/BestDinner-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=/builds/adriangorski996/best-dinner-management-system-backend/target/BestDinner-0.0.1-SNAPSHOT.jar
 ARG CONFIG=src/main/resources
 
 # Add the application's jar to the container
