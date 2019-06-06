@@ -1,10 +1,19 @@
 package pl.bestdinner.repositories;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.Repository;
+import org.springframework.stereotype.Repository;
 import pl.bestdinner.model.Pracownik;
 
-public interface PracownikRepository extends Repository<Pracownik, Long> {
-    @Query("from Pracownik where ID_Pracownik = ?1")
-    Pracownik findById(int ID_Pracownik);
+import java.util.List;
+
+@Repository
+public interface PracownikRepository extends JpaRepository<Pracownik, Integer> {
+
+    @Query("SELECT p FROM Pracownik p JOIN p.adres a ")
+    List<Object> findAllPracownik();
+
+    @Query("SELECT p FROM Pracownik p JOIN p.adres a WHERE p.id_Pracownik=?1")
+    Object findPracownik(int idPrac);
+
 }

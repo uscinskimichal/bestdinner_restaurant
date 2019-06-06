@@ -1,6 +1,11 @@
 package pl.bestdinner.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,11 +35,13 @@ public class Klient {
 
     @OneToOne(mappedBy = "klient", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
+
     private Konto konto;
 
     @ManyToOne
     @JoinColumn(name = "ID_Adres", nullable = false)
     private Adres adres;
+
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
@@ -44,4 +51,60 @@ public class Klient {
     )
     Set<Zamowienie> zamowienia = new HashSet<>();
 
+
+    public int getId_Klient() {
+        return id_Klient;
+    }
+
+    public void setId_Klient(int id_Klient) {
+        this.id_Klient = id_Klient;
+    }
+
+    public String getImie() {
+        return imie;
+    }
+
+    public void setImie(String imie) {
+        this.imie = imie;
+    }
+
+    public String getNazwisko() {
+        return nazwisko;
+    }
+
+    public void setNazwisko(String nazwisko) {
+        this.nazwisko = nazwisko;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHaslo() {
+        return haslo;
+    }
+
+    public void setHaslo(String haslo) {
+        this.haslo = haslo;
+    }
+
+    public Konto getKonto() {
+        return konto;
+    }
+
+    public Adres getAdres() {
+        return adres;
+    }
 }

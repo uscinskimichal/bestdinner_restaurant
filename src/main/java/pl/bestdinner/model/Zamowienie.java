@@ -1,7 +1,6 @@
 package pl.bestdinner.model;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -32,8 +31,10 @@ public class Zamowienie {
     @JoinColumn(name = "ID_Stolik", nullable = false)
     private Stolik stolik;
 
+
     @OneToMany(mappedBy = "zamowienie")
     private Set<ElementZamowienia> elementyZamowienia;
+
 
     @OneToMany(mappedBy = "zamowienie")
     private Set<HistoriaZamowienia> historieZamowienia;
@@ -45,32 +46,56 @@ public class Zamowienie {
     @JoinColumn(name = "ID_Pracownik", nullable = false)
     private Pracownik pracownik;
 
-    public JSONObject toJSONObject() {
+    public Integer getId_Zamowienie() {
+        return id_Zamowienie;
+    }
 
-        JSONObject object = new JSONObject();
-        JSONArray elementy = new JSONArray();
+    public void setId_Zamowienie(Integer id_Zamowienie) {
+        this.id_Zamowienie = id_Zamowienie;
+    }
 
-        for(ElementZamowienia ez : elementyZamowienia) {
-            elementy.put(ez.toJSONObject());
-        }
-
-        object.put("Status", status);
-        object.put("Data", data);
-        object.put("Typ", typ);
-        object.put("ElementyZamowienia", elementy);
-
-        return object;
+    public String getStatus() {
+        return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setTyp(String typ) {
-        this.typ = typ;
+    public Timestamp getData() {
+        return data;
     }
 
     public void setData(Timestamp data) {
         this.data = data;
+    }
+
+    public String getTyp() {
+        return typ;
+    }
+
+    public void setTyp(String typ) {
+        this.typ = typ;
+    }
+
+
+    public Set<ElementZamowienia> getElementyZamowienia() {
+        return elementyZamowienia;
+    }
+
+    public Stolik getStolik() {
+        return stolik;
+    }
+
+    public Adres getAdres() {
+        return adres;
+    }
+
+    public Set<Klient> getKlienci() {
+        return klienci;
+    }
+
+    public Pracownik getPracownik() {
+        return pracownik;
     }
 }

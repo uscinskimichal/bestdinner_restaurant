@@ -1,6 +1,6 @@
 package pl.bestdinner.model;
 
-import org.json.JSONObject;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -27,16 +27,32 @@ public class ElementZamowienia {
     @JoinColumn(name = "ID_DanieZmienione")
     private DanieZmienione danieZmienione;
 
+
     @OneToMany(mappedBy = "elementZamowienia")
     private Set<HistoriaElementuZamowienia> historieElementuZamowienia;
 
-    public JSONObject toJSONObject() {
+    public int getId_ElementZamowienia() {
+        return id_ElementZamowienia;
+    }
 
-        JSONObject object = new JSONObject();
-        object.put("ID_ElementZamowienia", id_ElementZamowienia);
-        object.put("Danie", danie.toJSONObject());
-        object.put("Status", status);
+    public void setId_ElementZamowienia(int id_ElementZamowienia) {
+        this.id_ElementZamowienia = id_ElementZamowienia;
+    }
 
-        return object;
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+    public Danie getDanie() {
+        return danie;
+    }
+
+    public DanieZmienione getDanieZmienione() {
+        return danieZmienione;
     }
 }

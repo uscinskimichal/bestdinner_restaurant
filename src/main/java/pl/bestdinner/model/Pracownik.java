@@ -1,7 +1,6 @@
 package pl.bestdinner.model;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -35,14 +34,18 @@ public class Pracownik {
     @JoinColumn(name = "ID_Adres", nullable = false)
     private Adres adres;
 
+
     @OneToMany(mappedBy = "pracownik")
     private Set<HistoriaElementuZamowienia> historieElementuZamowienia;
+
 
     @OneToMany(mappedBy = "pracownik")
     private Set<ZamowienieMagazynowe> zamowieniaMagazynowe;
 
+
     @OneToMany(mappedBy = "pracownik")
     private Set<Zamowienie> zamowienia;
+
 
     @OneToMany(mappedBy = "pracownik")
     private Set<HistoriaZamowienia> historieZamowienia;
@@ -51,17 +54,59 @@ public class Pracownik {
         return id_Pracownik;
     }
 
-    public JSONObject toJSONObject() {
+    public void setId_Pracownik(int id_Pracownik) {
+        this.id_Pracownik = id_Pracownik;
+    }
 
-        JSONObject object = new JSONObject();
+    public String getImie() {
+        return imie;
+    }
 
-        object.put("Imie", imie);
-        object.put("Nazwisko", nazwisko);
-        object.put("Login", login);
-        object.put("Email", email);
-        object.put("Haslo",haslo);
-        object.put("Rola",rola);
+    public void setImie(String imie) {
+        this.imie = imie;
+    }
 
-        return object;
+    public String getNazwisko() {
+        return nazwisko;
+    }
+
+    public void setNazwisko(String nazwisko) {
+        this.nazwisko = nazwisko;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHaslo() {
+        return haslo;
+    }
+
+    public void setHaslo(String haslo) {
+        this.haslo = haslo;
+    }
+
+    public String getRola() {
+        return rola;
+    }
+
+    public void setRola(String rola) {
+        this.rola = rola;
+    }
+
+    public Adres getAdres() {
+        return adres;
     }
 }

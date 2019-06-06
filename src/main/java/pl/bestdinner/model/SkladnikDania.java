@@ -1,6 +1,8 @@
 package pl.bestdinner.model;
 
-import org.json.JSONObject;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,12 +24,15 @@ public class SkladnikDania implements Serializable {
     @JoinColumn(name = "ID_Danie", nullable = false)
     private Danie danie;
 
-    public JSONObject getJSONObject() {
+    public int getIlosc() {
+        return ilosc;
+    }
 
-        JSONObject object = new JSONObject();
-        object.put("ilosc", ilosc);
-        object.put("nazwa", skladnik.getNazwa());
+    public void setIlosc(int ilosc) {
+        this.ilosc = ilosc;
+    }
 
-        return object;
+    public Skladnik getSkladnik() {
+        return skladnik;
     }
 }

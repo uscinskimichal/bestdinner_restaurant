@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pl.bestdinner.model.Danie;
+import pl.bestdinner.model.Klient;
 import pl.bestdinner.model.Pracownik;
+import pl.bestdinner.repositories.DanieRepository;
+import pl.bestdinner.repositories.KlientRepository;
 import pl.bestdinner.repositories.PracownikRepository;
 
 import javax.persistence.EntityManager;
@@ -15,28 +19,24 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Controller
-public class PracownikController {
+public class KlientController {
 
     @Autowired
-    PracownikRepository pracownikRepository;
+    KlientRepository klientRepository;
 
-    @RequestMapping(value = "/pracownicy", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/klienci", method = RequestMethod.GET)
     @ResponseBody
-    public List<Object> getPracownik() {
-        return pracownikRepository.findAllPracownik();
+    public List<Object> getKlienci() {
+        return klientRepository.findKlienci();
     }
 
 
-    @RequestMapping(value = "/pracownicy/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/klienci/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Object getPracownik(@PathVariable("id") int id) {
-        return pracownikRepository.findPracownik(id);
+    public Object getKlient(@PathVariable("id") int id) {
+        return klientRepository.findKlient(id);
     }
 
 
-    @RequestMapping(value = "/pracownicy", method = RequestMethod.POST)
-    @ResponseBody
-    public String addPracownik() {
-        return "dupa";
-    }
 }
