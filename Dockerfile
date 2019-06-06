@@ -13,4 +13,4 @@ ADD ${CONFIG} src/main/resources
 
 EXPOSE 5000
 
-ENTRYPOINT ["java","-jar","BestDinner-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","BestDinner.jar"]
