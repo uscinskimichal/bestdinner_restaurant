@@ -10,46 +10,45 @@ import java.util.Set;
 
 @Setter
 @Getter
-@Table
-@Entity(name = "Klient")
+@Entity(name = "client")
 public class Client {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "ID_Klient")
+    @Column(name = "client_id")
     private Integer idClient;
 
-    @Column(name = "Imie", columnDefinition = "VARCHAR(1024)", nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "Nazwisko", columnDefinition = "VARCHAR(1024)", nullable = false)
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "Login", columnDefinition = "VARCHAR(1024)", nullable = false)
+    @Column(name = "login")
     private String login;
 
-    @Column(name = "Email", columnDefinition = "VARCHAR(1024)", nullable = false)
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "Haslo", columnDefinition = "VARCHAR(1024)", nullable = false)
+    @Column(name = "password")
     private String password;
 
-    @OneToOne(mappedBy = "client", cascade = CascadeType.ALL,
+/*    @OneToOne(mappedBy = "client", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
 
-    private Konto account;
+    private Konto account;*/
 
     @ManyToOne
-    @JoinColumn(name = "ID_Adres", nullable = false)
-    private Adres address;
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
 
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+@ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
-            name = "Klient_Zamowienie",
-            joinColumns = {@JoinColumn(name = "ID_Klient")},
-            inverseJoinColumns = {@JoinColumn(name = "ID_Zamowienie")}
+            name = "client_order",
+            joinColumns = {@JoinColumn(name = "client_id")},
+            inverseJoinColumns = {@JoinColumn(name = "order_id")}
     )
-    Set<Zamowienie> orders = new HashSet<>();
+    Set<Order> orders = new HashSet<>();
 
 }

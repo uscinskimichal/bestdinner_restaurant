@@ -1,11 +1,7 @@
 package pl.bestdinner.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.bestdinner.repositories.ZamowienieMagazynoweRepository;
 
-import java.sql.Date;
-import java.util.List;
 // To nie jest impl
 @Service
 public class ZamowienieMagazynoweRepositoryImpl {

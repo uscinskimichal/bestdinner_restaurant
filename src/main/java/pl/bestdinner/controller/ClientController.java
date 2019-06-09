@@ -2,14 +2,13 @@ package pl.bestdinner.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.bestdinner.dto.ClientDto;
 import pl.bestdinner.service.ClientService;
 
 import java.util.List;
 
-@Controller("/clients") // nie ma potrzebny dawać  przy każdej metodzie tej samej częsści URL, tworzymy hierarchię zasobów
+@RestController("/clients") // nie ma potrzebny dawać  przy każdej metodzie tej samej częsści URL, tworzymy hierarchię zasobów
 public class ClientController {
 
 
@@ -22,10 +21,31 @@ public class ClientController {
 
     @GetMapping(produces = "application/json;charset=UTF-8") // można dorzucić  produces, żeby jawnie ustawić kodowanie
     public ResponseEntity<List<ClientDto>> getClients() {
-        List<ClientDto> clientDtos = clientService.getClients();
-        clientDtos.forEach(System.out::println);
-        return new ResponseEntity<>(clientDtos, HttpStatus.OK);
+        return new ResponseEntity<>( clientService.getAll(), HttpStatus.OK);
     }
+
+    @PostMapping(produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
+    public ResponseEntity<ClientDto> createClient(@RequestBody ClientDto request) {
+        return new ResponseEntity<>(clientService.create(request), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{clientId}")
+    public ResponseEntity deleteClient (@PathVariable("clientId") Integer clientId){
+        clientService.delete(clientId);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{clientId}")
+    public ResponseEntity<ClientDto> getClient (@PathVariable("clientId") Integer clientId){
+        return new ResponseEntity<>(clientService.get(clientId), HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/{clientId}")
+    public ResponseEntity<ClientDto> updateClient(@RequestBody ClientDto clientDto,
+                                                  @PathVariable("clientId") Integer clientId){
+        return new ResponseEntity<ClientDto>(clientService.update(clientDto, clientId), HttpStatus.OK);
+    }
+
 
 
 //    @RequestMapping(value = "/{id}", method = RequestMethod.GET)

@@ -8,11 +8,13 @@ import lombok.*;
 @Setter
 public class ClientDto {
     private Integer idClient;
-    private String name;
+    private String firstName;
     private String lastName;
     private String login;
     private String email;
     private String password;
+    private Double balance;
+    private AddressClientDto address;
 
 
 }

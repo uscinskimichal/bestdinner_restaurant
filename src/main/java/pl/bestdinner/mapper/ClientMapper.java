@@ -13,6 +13,8 @@ public interface ClientMapper {
 
     ClientDto convert(Client in);
 
+    Client convert(ClientDto in);
+
     List<ClientDto> convert(List<Client> in);
 }
 
