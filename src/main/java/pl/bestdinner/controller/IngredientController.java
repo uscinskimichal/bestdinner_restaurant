@@ -32,19 +32,19 @@ public class IngredientController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity delete(@PathVariable("id") Integer clientId){
-        service.delete(clientId);
+    public ResponseEntity delete(@PathVariable("id") Integer id){
+        service.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<IngredientDto> getClient (@PathVariable("id") Integer id){
+    public ResponseEntity<IngredientDto> get(@PathVariable("id") Integer id){
         return new ResponseEntity<>(service.get(id), HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{clientId}")
-    public ResponseEntity<IngredientDto> updateClient(@RequestBody IngredientDto requestBody,
-                                                  @PathVariable("clientId") Integer id){
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<IngredientDto> update(@RequestBody IngredientDto requestBody,
+                                                  @PathVariable("id") Integer id){
         return new ResponseEntity<>(service.update(requestBody, id), HttpStatus.OK);
     }
 }
