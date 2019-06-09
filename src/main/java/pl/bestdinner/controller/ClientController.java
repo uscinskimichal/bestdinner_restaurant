@@ -8,7 +8,8 @@ import pl.bestdinner.service.ClientService;
 
 import java.util.List;
 
-@RestController("/clients") // nie ma potrzebny dawać  przy każdej metodzie tej samej częsści URL, tworzymy hierarchię zasobów
+@RestController()
+@RequestMapping("/clients")// nie ma potrzebny dawać  przy każdej metodzie tej samej częsści URL, tworzymy hierarchię zasobów
 public class ClientController {
 
 
