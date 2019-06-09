@@ -43,16 +43,8 @@ public class ClientController {
     @PutMapping(value = "/{clientId}")
     public ResponseEntity<ClientDto> updateClient(@RequestBody ClientDto clientDto,
                                                   @PathVariable("clientId") Integer clientId){
-        return new ResponseEntity<ClientDto>(clientService.update(clientDto, clientId), HttpStatus.OK);
+        return new ResponseEntity<>(clientService.update(clientDto, clientId), HttpStatus.OK);
     }
 
-
-
-//    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-//    @ResponseBody
-//    public Object getKlient(@PathVariable("id") int id) {
-//        return clientRepository.findClient(id);
-//    }
-//
 
 }
