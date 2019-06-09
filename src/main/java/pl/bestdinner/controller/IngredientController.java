@@ -3,49 +3,48 @@ package pl.bestdinner.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.bestdinner.dto.ClientDto;
-import pl.bestdinner.service.ClientService;
+import pl.bestdinner.dto.IngredientDto;
+import pl.bestdinner.dto.EmployeeDto;
+import pl.bestdinner.dto.IngredientDto;
+import pl.bestdinner.service.EmployeeService;
+import pl.bestdinner.service.IngredientService;
 
 import java.util.List;
 
 @RestController()
-@RequestMapping("/clients")// nie ma potrzebny dawać  przy każdej metodzie tej samej częsści URL, tworzymy hierarchię zasobów
-public class ClientController {
+@RequestMapping("/ingredients")
+public class IngredientController {
 
+    private final IngredientService service;
 
-    private final ClientService service;
-
-    public ClientController(ClientService service) {
+    public IngredientController(IngredientService service) {
         this.service = service;
     }
 
-
     @GetMapping(produces = "application/json;charset=UTF-8") // można dorzucić  produces, żeby jawnie ustawić kodowanie
-    public ResponseEntity<List<ClientDto>> getAll() {
+    public ResponseEntity<List<IngredientDto>> getAll() {
         return new ResponseEntity<>( service.getAll(), HttpStatus.OK);
     }
 
     @PostMapping(produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<ClientDto> create(@RequestBody ClientDto requestBody) {
+    public ResponseEntity<IngredientDto> create(@RequestBody IngredientDto requestBody) {
         return new ResponseEntity<>(service.create(requestBody), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity delete(@PathVariable("id") Integer clientId){
-        service.delete(clientId);
+    public ResponseEntity delete(@PathVariable("id") Integer id){
+        service.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ClientDto> get(@PathVariable("id") Integer id){
+    public ResponseEntity<IngredientDto> get(@PathVariable("id") Integer id){
         return new ResponseEntity<>(service.get(id), HttpStatus.OK);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ClientDto> update(@RequestBody ClientDto requestBody,
+    public ResponseEntity<IngredientDto> update(@RequestBody IngredientDto requestBody,
                                                   @PathVariable("id") Integer id){
         return new ResponseEntity<>(service.update(requestBody, id), HttpStatus.OK);
     }
-
-
 }

@@ -19,30 +19,30 @@ public class EmployeeController {
     }
 
     @GetMapping(produces = "application/json;charset=UTF-8") // można dorzucić  produces, żeby jawnie ustawić kodowanie
-    public ResponseEntity<List<EmployeeDto>> getEmployees() {
+    public ResponseEntity<List<EmployeeDto>> getAll() {
         return new ResponseEntity<>( employeeService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping(produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto request) {
-        return new ResponseEntity<>(employeeService.create(request), HttpStatus.OK);
+    public ResponseEntity<EmployeeDto> create(@RequestBody EmployeeDto requestBody) {
+        return new ResponseEntity<>(employeeService.create(requestBody), HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/{employeeId}")
-    public ResponseEntity deleteEmployee (@PathVariable("emloyeeId") Integer emloyeeId){
-        employeeService.delete(emloyeeId);
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity delete(@PathVariable("id") Integer id){
+        employeeService.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{employeeId}")
-    public ResponseEntity<EmployeeDto> getEmployee (@PathVariable("employeeId") Integer emloyeeId){
-        return new ResponseEntity<>(employeeService.get(emloyeeId), HttpStatus.OK);
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<EmployeeDto> get(@PathVariable("id") Integer id){
+        return new ResponseEntity<>(employeeService.get(id), HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{employeeId}")
-    public ResponseEntity<EmployeeDto> updateEmployee(@RequestBody EmployeeDto employeeDto,
-                                                      @PathVariable("employeeId") Integer employeeId){
-        return new ResponseEntity<>(employeeService.update(employeeDto, employeeId), HttpStatus.OK);
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<EmployeeDto> update(@RequestBody EmployeeDto requestBody,
+                                                      @PathVariable("id") Integer id){
+        return new ResponseEntity<>(employeeService.update(requestBody, id), HttpStatus.OK);
     }
 
 }
