@@ -2,7 +2,7 @@ image: docker:latest
 
 stages:
   - build
-  - deploy
+#  - deploy
 
 build:
   stage: build
@@ -13,21 +13,20 @@ build:
   environment:
     name: dev
   only:
-    - develop
 
 services:
   - docker:dind
 
-deploy:
-  stage: deploy
-  dependencies:
-    - build
-  script:
-    - echo "$REGISTRY_PASSWORD" | docker login registry.gitlab.com -u "$REGISTRY_USER" --password-stdin
-    - docker build -t registry.gitlab.com/adriangorski996/best-dinner-management-system-backend .
-    - docker push registry.gitlab.com/adriangorski996/best-dinner-management-system-backend
-    - echo "DEPLOYED SUCCESSFULLY - DEVELOP"
-  environment:
-    name: dev
-  only:
-    - develop
+#deploy:
+#  stage: deploy
+#  dependencies:
+#    - build
+#  script:
+#    - echo "$REGISTRY_PASSWORD" | docker login registry.gitlab.com -u "$REGISTRY_USER" --password-stdin
+#    - docker build -t registry.gitlab.com/adriangorski996/best-dinner-management-system-backend .
+#    - docker push registry.gitlab.com/adriangorski996/best-dinner-management-system-backend
+#    - echo "DEPLOYED SUCCESSFULLY - DEVELOP"
+#  environment:
+#    name: dev
+#  only:
+#    - develop
