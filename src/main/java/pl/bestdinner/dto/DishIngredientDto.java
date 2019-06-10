@@ -8,7 +8,7 @@ import lombok.Setter;
 public class DishIngredientDto {
 
 
-    private Integer dishIngredeintId;
+    private Integer dishIngredientId;
 
     private Integer quantity;
 
