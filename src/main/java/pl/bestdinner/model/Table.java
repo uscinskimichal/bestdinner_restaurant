@@ -32,6 +32,9 @@ public class Table {
     @Column(name = "status")
     private Integer status;
 
+    @Column(name = "name")
+    private String name;
+
     @OneToMany(mappedBy = "table")
     private Set<Order> orders;
 }

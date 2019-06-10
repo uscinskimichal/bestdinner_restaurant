@@ -23,9 +23,9 @@ public class Address {
     private String street;
 
     @Column(name = "building_number")
-    private String buildingNubmer;
+    private String buildingNumber;
 
-    @Column(name = "apparetment_number")
+    @Column(name = "appartment_number")
     private String appartmentNumber;
 
     @OneToMany(mappedBy = "address")
