@@ -27,6 +27,11 @@ public class Order {
     @Column(name = "type")
     private String type;
 
+    /* Jest w requestach nie ma w bazie
+
+    @Column(name = "comment")
+    private String comment; */
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
     private Address address;
