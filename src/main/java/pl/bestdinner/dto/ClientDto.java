@@ -7,6 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 public class ClientDto {
+
     private Integer idClient;
     private String firstName;
     private String lastName;
@@ -15,6 +16,4 @@ public class ClientDto {
     private String password;
     private Double balance;
     private AddressClientDto address;
-
-
 }

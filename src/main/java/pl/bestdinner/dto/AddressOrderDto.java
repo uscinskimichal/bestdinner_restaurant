@@ -5,11 +5,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AddressClientDto {
-    private Integer addressId;
+public class AddressOrderDto {
+
+    private int idAddress;
     private String city;
     private String street;
-    private String streetNumber;
+    private String buildingNumber;
     private String appartmentNumber;
-
 }
