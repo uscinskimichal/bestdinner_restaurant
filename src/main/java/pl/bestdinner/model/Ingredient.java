@@ -22,7 +22,7 @@ public class Ingredient {
     private Double warehouseQuantity;
 
     @Column(name = "measurement_unit")
-    private Double measurementUnit;
+    private String measurementUnit;
 
     @Column(name = "client_price")
     private Double clientPrice;

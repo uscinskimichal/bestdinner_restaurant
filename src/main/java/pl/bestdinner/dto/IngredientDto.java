@@ -8,6 +8,6 @@ import lombok.Setter;
 public class IngredientDto {
     private Integer ingredientId;
     private String name;
-    private Double measurementUnit;
+    private String measurementUnit;
     private Double warehousePrice;
 }
