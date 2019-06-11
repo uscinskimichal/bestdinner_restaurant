@@ -11,6 +11,6 @@ public class OrderItemDto {
 
     private Integer orderItemId;
     private String status;
-    private List<ChangedDishDto> changedDish;
-    private List<DishDto> dish; //Czy powinno zwracać też listę składników?
+    private ChangedDishDto changedDish;
+    private DishDto dish; //Czy powinno zwracać też listę składników?
 }
