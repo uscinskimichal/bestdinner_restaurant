@@ -72,4 +72,15 @@ insert into tables (table_id, width, height, x, y, status, name, room_id) values
     (3, 2, 3, 15, 10, 0, 'ed', 3),
     (4, 3, 2, 10, 17, 0, 'jk', 3);
 
+delete from employee;
+insert into employee (employee_id, name, last_name, login, email, password, role) values
+    (1, 'Julian', 'Szczery', 'julszcze', 'julo@wp.pl', 'admin1', 'kelner'),
+    (2, 'Zenon', 'Martyniuk', 'zenek', 'zenio@o2.pl', 'haslo123', 'kelner'),
+    (3, 'Jerzy', 'Donigiewicz', 'diggy', 'diggy@wp.pl', 'admin1', 'menadżer');
+
+delete from orders;
+insert into orders (order_id, comment, date, status, type, address_id, employee_id, table_id) values
+    (1, 'na cienkim', '2019-06-11', 'wtrakcie', 'namiejscu', 1, 2, 2),
+    (2, 'na grubym', '2019-06-12', 'wtrakcie', 'nawynos', 2, 3, 4);
+
 commit;
