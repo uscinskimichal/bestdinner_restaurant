@@ -58,4 +58,18 @@ insert into dish_ingredient (dish_ingredient_id, quantity, dish_id, ingredient_i
     (19, 2, 3, 5),
     (20, 2, 3, 6);
 
+delete from rooms;
+insert into rooms (room_id, width, height) values
+    (1, 200, 200),
+    (2, 400, 200),
+    (3, 200, 400),
+    (4, 100, 300);
+
+delete from tables;
+insert into tables (table_id, width, height, x, y, status, name, room_id) values
+    (1, 2, 2, 10, 10, 0, 'd2', 1),
+    (2, 3, 3, 10, 18, 0, 'ad', 2),
+    (3, 2, 3, 15, 10, 0, 'ed', 3),
+    (4, 3, 2, 10, 17, 0, 'jk', 3);
+
 commit;
