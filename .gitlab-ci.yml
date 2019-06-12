@@ -2,7 +2,7 @@ image: docker:latest
 
 stages:
   - build
-#  - deploy
+  - deploy
 
 build:
   stage: build
