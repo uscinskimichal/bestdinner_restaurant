@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import pl.bestdinner.dto.OrderDto;
 import pl.bestdinner.service.OrderService;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController()
@@ -21,8 +24,15 @@ public class OrderController {
 
 
     @GetMapping(produces = "application/json;charset=UTF-8") // można dorzucić  produces, żeby jawnie ustawić kodowanie
-    public ResponseEntity<List<OrderDto>> getAll() {
-        return new ResponseEntity<>( service.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<OrderDto>> getAll(
+            @RequestParam (required = false) String status,
+            @RequestParam (required = false) String clientId,
+            @RequestParam (required = false) String employeeId,
+            @RequestParam (required = false) Date dateFrom,
+            @RequestParam (required = false) Date dateTo,
+            @RequestParam (required = false) String type
+    ) {
+        return new ResponseEntity<>( service.getAll(status,clientId,employeeId,dateFrom,dateTo,type), HttpStatus.OK);
     }
 
     @PostMapping(produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")

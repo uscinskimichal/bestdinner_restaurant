@@ -3,11 +3,14 @@ package pl.bestdinner.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.bestdinner.dto.OrderDto;
 import pl.bestdinner.mapper.OrderMapper;
 import pl.bestdinner.model.Order;
 import pl.bestdinner.repositories.OrderRepository;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -22,9 +25,16 @@ public class OrderService {
     }
 
 
-    @Transactional
-    public List<OrderDto> getAll() {
-        return orderMapper.convert(orderRepository.findAll());
+
+    public List<OrderDto> getAll(String status, String clientId, String employeeId, Date dateFrom, Date dateTo, String type) {
+        if(status!=null) return orderMapper.convert(orderRepository.findAllByStatus(status));
+        else if(type!=null) return orderMapper.convert(orderRepository.findAllByType(type));
+        else if(dateFrom!=null) return orderMapper.convert(orderRepository.findAllByDateGreaterThanEqual(dateFrom));
+        else if(dateTo!=null) return orderMapper.convert(orderRepository.findAllByDateIsLessThanEqual(dateTo));
+        else if(clientId!=null) return orderMapper.convert(orderRepository.findAllByClients_IdClient(Integer.parseInt(clientId)));
+        else if(employeeId!=null) return orderMapper.convert(orderRepository.findAllByEmployee_IdEmployee(Integer.parseInt(employeeId)));
+
+        return  orderMapper.convert(orderRepository.findAll());
     }
 
     @Transactional
