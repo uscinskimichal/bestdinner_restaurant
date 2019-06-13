@@ -40,7 +40,8 @@ public class ClientService {
     }
 
     public void delete(Integer clientId) {
-        Client client = clientRepository.findById(clientId).orElseThrow(NoSuchElementException::new);
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(NoSuchElementException::new);
         clientRepository.delete(client);
     }
 

@@ -1,9 +1,12 @@
 package pl.bestdinner.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +25,7 @@ public class Order {
     private String status;
 
     @Column(name = "date")
-    private LocalDateTime date;
+    private Date date;
 
     @Column(name = "type")
     private String type;
@@ -50,8 +53,5 @@ public class Order {
 
     @ManyToMany(mappedBy = "orders")
     private List<Client> clients;
-
-
-
 
 }
