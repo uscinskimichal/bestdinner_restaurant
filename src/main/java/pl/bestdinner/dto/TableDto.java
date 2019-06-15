@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public class TableDto {
 
-    @JsonProperty("idTable")
+    @JsonProperty("id_table")
     private Long idTable;
     @JsonProperty("x")
     private Long x;
