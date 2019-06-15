@@ -3,7 +3,6 @@ package pl.bestdinner.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-import pl.bestdinner.model.Table;
 
 import java.sql.Date;
 import java.time.LocalDate;
