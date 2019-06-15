@@ -35,7 +35,7 @@ public class Table {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "table")
+    @OneToMany(mappedBy = "orderId")
     private Set<Order> orders;
 
     @ManyToOne(fetch = FetchType.LAZY)

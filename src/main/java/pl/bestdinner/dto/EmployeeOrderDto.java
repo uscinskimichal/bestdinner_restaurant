@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EmployeeOrderDto {
-    @JsonProperty("dish_ingredient_id")
+    @JsonProperty("employee_id")
     private Long idEmployee;
     @JsonProperty("name")
     private String name;
