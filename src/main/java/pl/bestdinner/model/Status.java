@@ -14,11 +14,14 @@ public class Status {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "status_id")
-    private Long statusId;
+    private Long roomId;
 
     @Column(name = "name")
     private String name;
 
     @OneToMany(mappedBy = "status")
     private Set<Order> orders;
+
+    @OneToMany(mappedBy = "status")
+    private Set<OrderItem> orderItems;
 }

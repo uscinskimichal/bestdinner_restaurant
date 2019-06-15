@@ -3,7 +3,6 @@ package pl.bestdinner.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-import pl.bestdinner.model.Table;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -27,7 +26,7 @@ public class OrderDto {
     @JsonProperty("comment")
     private String comment;
     @JsonProperty("table")
-    private Table table;
+    private TableOrderDto table;
     @JsonProperty("clients")
     private List<ClientDto> clients;
     @JsonProperty("order_items")

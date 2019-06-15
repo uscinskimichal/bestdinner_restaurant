@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class StatusDto {
     @JsonProperty("status_id")
-    private Long statusId;
+    private Long roomId;
 
     @JsonProperty("name")
     private String name;
