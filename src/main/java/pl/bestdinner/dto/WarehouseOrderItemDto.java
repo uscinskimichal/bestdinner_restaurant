@@ -1,5 +1,6 @@
 package pl.bestdinner.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,7 +8,10 @@ import lombok.Setter;
 @Setter
 public class WarehouseOrderItemDto {
 
-    private Integer wareHouseOrderItemId;
-    private Integer quantity;
+    @JsonProperty("ware_house_order_item_id")
+    private Long wareHouseOrderItemId;
+    @JsonProperty("quantity")
+    private Long quantity;
+    @JsonProperty("ingredient")
     private IngredientDto ingredient;
 }

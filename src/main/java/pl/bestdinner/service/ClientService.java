@@ -34,23 +34,23 @@ public class ClientService {
     @Transactional
     public ClientDto create(ClientDto in) {
         Client client = clientMapper.convert(in);
-        client.setIdClient(0);
+        client.setIdClient(0L);
         clientRepository.save(client);
         return clientMapper.convert(client);
     }
 
-    public void delete(Integer clientId) {
+    public void delete(Long clientId) {
         Client client = clientRepository.findById(clientId)
                 .orElseThrow(NoSuchElementException::new);
         clientRepository.delete(client);
     }
 
-    public ClientDto get(Integer clientId) {
+    public ClientDto get(Long clientId) {
         Client client = clientRepository.findById(clientId).orElseThrow(NoSuchElementException::new);
         return clientMapper.convert(client);
     }
 
-    public ClientDto update(ClientDto clientDto, Integer clientId) {
+    public ClientDto update(ClientDto clientDto, Long clientId) {
         Client client = clientMapper.convert(clientDto);
         client.setIdClient(clientId);
         clientRepository.save(client);

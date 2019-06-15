@@ -1,9 +1,11 @@
 package pl.bestdinner.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,14 +13,24 @@ import java.util.List;
 @Setter
 public class OrderDto {
 
-    private Integer orderId;
-    private String status;
-    private Date date;
+    @JsonProperty("order_id")
+    private Long orderId;
+    @JsonProperty("status")
+    private StatusDto status;
+    @JsonProperty("date")
+    private LocalDate date;
+    @JsonProperty("employee")
     private EmployeeOrderDto employee;
+    @JsonProperty("type")
     private String type;
+    @JsonProperty("comment")
     private String comment;
+    @JsonProperty("table")
     private TableOrderDto table;
+    @JsonProperty("clients")
     private List<ClientDto> clients;
+    @JsonProperty("order_items")
     private List<OrderItemDto> orderItems;
+    @JsonProperty("address")
     private AddressOrderDto address;
 }

@@ -30,22 +30,22 @@ public class RoomService {
     @Transactional
     public RoomDto create(RoomDto in) {
         Room room = roomMapper.convert(in);
-        room.setRoomId(0);
+        room.setRoomId(0L);
         roomRepository.save(room);
         return roomMapper.convert(room);
     }
 
-    public void delete(Integer roomId) {
+    public void delete(Long roomId) {
         Room room = roomRepository.findById(roomId).orElseThrow(NoSuchElementException::new);
         roomRepository.delete(room);
     }
 
-    public RoomDto get(Integer roomId) {
+    public RoomDto get(Long roomId) {
         Room room = roomRepository.findById(roomId).orElseThrow(NoSuchElementException::new);
         return roomMapper.convert(room);
     }
 
-    public RoomDto update(RoomDto roomDto, Integer roomId) {
+    public RoomDto update(RoomDto roomDto, Long roomId) {
         Room room = roomMapper.convert(roomDto);
         room.setRoomId(roomId);
         roomRepository.save(room);

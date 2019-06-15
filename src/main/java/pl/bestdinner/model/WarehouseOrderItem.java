@@ -12,10 +12,10 @@ public class WarehouseOrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "warehouse_order_item_id")
-    private Integer tableId;
+    private Long tableId;
 
     @Column(name = "quantity")
-    private Integer quantity;
+    private Long quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ingredient_id")

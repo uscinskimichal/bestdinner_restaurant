@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Getter
@@ -13,7 +15,7 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ingredient_id")
-    private Integer ingredientId;
+    private Long ingredientId;
 
     @Column(name = "name")
     private String name;
@@ -21,14 +23,13 @@ public class Ingredient {
     @Column(name = "warehouse_quantity")
     private Double warehouseQuantity;
 
-    @Column(name = "measurement_unit")
-    private String measurementUnit;
-
+    @Digits(integer=5, fraction=2)
     @Column(name = "client_price")
-    private Double clientPrice;
+    private BigDecimal clientPrice;
 
+    @Digits(integer=5, fraction=2)
     @Column(name = "warehouse_price")
-    private Double warehousePrice;
+    private BigDecimal warehousePrice;
 
     @Column(name = "is_sold_to_client")
     private Boolean isSoldToClient;
@@ -39,5 +40,8 @@ public class Ingredient {
     @OneToMany(mappedBy = "ingredient")
     private Set<WarehouseOrderItem> warehouseOrderItemSet;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "measurement_unit_id")
+    private MeasurementUnit measurementUnit;
 
 }

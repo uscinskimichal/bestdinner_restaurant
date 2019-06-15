@@ -2,11 +2,8 @@ package pl.bestdinner.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.bestdinner.model.Dish;
-
-import java.util.List;
+import pl.bestdinner.model.MeasurementUnit;
 
 @Repository
-public interface DishRepository extends JpaRepository<Dish, Long> {
-    List<Dish> findAll();
+public interface MeasurementRepository extends JpaRepository<MeasurementUnit, Long> {
 }

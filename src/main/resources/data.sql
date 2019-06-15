@@ -1,8 +1,8 @@
 start transaction;
 
 delete from address;
-insert into address (address_id, appartment_number, building_number, city, street) values
-    (1, 14, 24, 'Prószków', 'Laskowa'),
+insert into address (address_id, apartment_number, building_number, city, street) values
+    (1, 14, 24, 'Pruszków', 'Laskowa'),
     (2, 6, 67, 'Rzeszów', 'Piękna'),
     (3, 134, 11, 'Baranów', 'Stankiewicza'),
     (4, 34, 236, 'Łódź', 'Piotrowska'),

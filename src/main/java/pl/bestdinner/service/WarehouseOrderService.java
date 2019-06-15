@@ -30,22 +30,22 @@ public class WarehouseOrderService {
     @Transactional
     public WarehouseOrderDto create(WarehouseOrderDto in) {
         WarehouseOrder warehouseOrder = warehouseOrderMapper.convert(in);
-        warehouseOrder.setWarehouseOrderId(0);
+        warehouseOrder.setWarehouseOrderId(0L);
         warehouseOrderRepository.save(warehouseOrder);
         return warehouseOrderMapper.convert(warehouseOrder);
     }
 
-    public void delete(Integer warehouseOrderId) {
+    public void delete(Long warehouseOrderId) {
         WarehouseOrder warehouseOrder = warehouseOrderRepository.findById(warehouseOrderId).orElseThrow(NoSuchElementException::new);
         warehouseOrderRepository.delete(warehouseOrder);
     }
 
-    public WarehouseOrderDto get(Integer warehouseOrderId) {
+    public WarehouseOrderDto get(Long warehouseOrderId) {
         WarehouseOrder warehouseOrder = warehouseOrderRepository.findById(warehouseOrderId).orElseThrow(NoSuchElementException::new);
         return warehouseOrderMapper.convert(warehouseOrder);
     }
 
-    public WarehouseOrderDto update(WarehouseOrderDto warehouseOrderDto, Integer warehouseOrderId) {
+    public WarehouseOrderDto update(WarehouseOrderDto warehouseOrderDto, Long warehouseOrderId) {
         WarehouseOrder warehouseOrder = warehouseOrderMapper.convert(warehouseOrderDto);
         warehouseOrder.setWarehouseOrderId(warehouseOrderId);
         warehouseOrderRepository.save(warehouseOrder);

@@ -29,18 +29,18 @@ public class TableController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity delete(@PathVariable("id") Integer id) {
+    public ResponseEntity delete(@PathVariable("id") Long id) {
         tableService.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<TableDto> get(@PathVariable("id") Integer id) {
+    public ResponseEntity<TableDto> get(@PathVariable("id") Long id) {
         return new ResponseEntity<>(tableService.get(id), HttpStatus.OK);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<TableDto> update(@RequestBody TableDto tableDto, @PathVariable("id") Integer id) {
+    public ResponseEntity<TableDto> update(@RequestBody TableDto tableDto, @PathVariable("id") Long id) {
         return new ResponseEntity<>(tableService.update(tableDto, id), HttpStatus.OK);
     }
 }

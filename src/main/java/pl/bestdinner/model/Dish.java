@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Getter
@@ -14,13 +16,14 @@ public class Dish {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "dish_id")
-    private Integer idDish;
+    private Long idDish;
 
     @Column(name = "name")
     private String name;
 
+    @Digits(integer=5, fraction=2)
     @Column(name = "price")
-    private Double price;
+    private BigDecimal price;
 
     @OneToMany(mappedBy = "dish")
     private Set<OrderItem> orderItems;
@@ -30,5 +33,7 @@ public class Dish {
 
     @OneToMany(mappedBy = "dish")
     private Set<ChangedDish> changedDishSet;
+
+    //TODO słownik na typy dan (picie itd)
 
 }

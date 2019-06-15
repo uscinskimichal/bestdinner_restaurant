@@ -29,19 +29,19 @@ public class OrderItemController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity delete(@PathVariable("id") Integer id){
+    public ResponseEntity delete(@PathVariable("id") Long id){
         service.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<OrderItemDto> get(@PathVariable("id") Integer id){
+    public ResponseEntity<OrderItemDto> get(@PathVariable("id") Long id){
         return new ResponseEntity<>(service.get(id), HttpStatus.OK);
     }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<OrderItemDto> update(@RequestBody OrderItemDto requestBody,
-                                                @PathVariable("id") Integer id){
+                                                @PathVariable("id") Long id){
         return new ResponseEntity<>(service.update(requestBody, id), HttpStatus.OK);
     }
 }

@@ -30,22 +30,22 @@ public class OrderItemService {
     @Transactional
     public OrderItemDto create(OrderItemDto in) {
         OrderItem orderItem = orderItemMapper.convert(in);
-        orderItem.setOrderItemId(0);
+        orderItem.setOrderItemId(0L);
         orderItemRepository.save(orderItem);
         return orderItemMapper.convert(orderItem);
     }
 
-    public void delete(Integer orderItemId) {
+    public void delete(Long orderItemId) {
         OrderItem orderItem = orderItemRepository.findById(orderItemId).orElseThrow(NoSuchElementException::new);
         orderItemRepository.delete(orderItem);
     }
 
-    public OrderItemDto get(Integer orderItemId) {
+    public OrderItemDto get(Long orderItemId) {
         OrderItem orderItem = orderItemRepository.findById(orderItemId).orElseThrow(NoSuchElementException::new);
         return orderItemMapper.convert(orderItem);
     }
 
-    public OrderItemDto update(OrderItemDto orderItemDto, Integer orderItemId) {
+    public OrderItemDto update(OrderItemDto orderItemDto, Long orderItemId) {
         OrderItem orderItem = orderItemMapper.convert(orderItemDto);
         orderItem.setOrderItemId(orderItemId);
         orderItemRepository.save(orderItem);

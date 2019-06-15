@@ -30,22 +30,22 @@ public class EmployeeService {
     @Transactional
     public EmployeeDto create(EmployeeDto in) {
         Employee employee = employeeMapper.convert(in);
-        employee.setIdEmployee(0);
+        employee.setIdEmployee(0L);
         employeeRepository.save(employee);
         return employeeMapper.convert(employee);
     }
 
-    public void delete(Integer employeeId) {
+    public void delete(Long employeeId) {
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(NoSuchElementException::new);
         employeeRepository.delete(employee);
     }
 
-    public EmployeeDto get(Integer employeeId) {
+    public EmployeeDto get(Long employeeId) {
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(NoSuchElementException::new);
         return employeeMapper.convert(employee);
     }
 
-    public EmployeeDto update(EmployeeDto clientDto, Integer employeeId) {
+    public EmployeeDto update(EmployeeDto clientDto, Long employeeId) {
         Employee employee = employeeMapper.convert(clientDto);
         employee.setIdEmployee(employeeId);
         employeeRepository.save(employee);

@@ -14,7 +14,7 @@ public class ChangedDish {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "changed_dish_id")
-    private int changedDishId;
+    private Long changedDishId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dish_id")

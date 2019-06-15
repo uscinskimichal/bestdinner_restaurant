@@ -29,25 +29,25 @@ public class TableService {
     @Transactional
     public TableDto create(TableDto in) {
         Table table = tableMapper.convert(in);
-        table.setTableId(0);
+        table.setTableId(0L);
         tableRepository.save(table);
         return tableMapper.convert(table);
     }
 
     @Transactional
-    public void delete(Integer tableId) {
+    public void delete(Long tableId) {
         Table table = tableRepository.findById(tableId).orElseThrow(NoSuchElementException::new);
         tableRepository.delete(table);
     }
 
     @Transactional
-    public TableDto get(Integer tableId) {
+    public TableDto get(Long tableId) {
         Table table = tableRepository.findById(tableId).orElseThrow(NoSuchElementException::new);
         return tableMapper.convert(table);
     }
 
     @Transactional
-    public TableDto update(TableDto tableDto, Integer tableId) {
+    public TableDto update(TableDto tableDto, Long tableId) {
         Table table = tableMapper.convert(tableDto);
         table.setTableId(tableId);
         tableRepository.save(table);

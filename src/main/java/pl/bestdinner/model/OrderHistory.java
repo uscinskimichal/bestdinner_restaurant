@@ -14,7 +14,7 @@ public class OrderHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "order_history_id")
-    private Integer orderHistoryId;
+    private Long orderHistoryId;
 
     @Column(name = "status")
     private String status;
