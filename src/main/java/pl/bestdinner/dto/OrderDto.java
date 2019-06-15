@@ -27,7 +27,7 @@ public class OrderDto {
     @JsonProperty("comment")
     private String comment;
     @JsonProperty("table")
-    private Table table;
+    private TableDto table;
     @JsonProperty("clients")
     private List<ClientDto> clients;
     @JsonProperty("order_items")
