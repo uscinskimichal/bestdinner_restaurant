@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class DishStatusDTO {
+public class DishStatusDto {
     @JsonProperty("dish_status_id")
     private Long dishStatusId;
 
