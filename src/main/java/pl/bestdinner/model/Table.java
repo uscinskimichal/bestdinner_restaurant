@@ -30,7 +30,7 @@ public class Table {
     private Long height;
 
     @Column(name = "occupied")
-    private Boolean occupied;
+    private Boolean occupied; //TODO status stołu
 
     @Column(name = "name")
     private String name;

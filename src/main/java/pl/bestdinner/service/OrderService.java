@@ -31,8 +31,8 @@ public class OrderService {
         else if(type!=null) return orderMapper.convert(orderRepository.findAllByType(type));
         else if(dateFrom!=null) return orderMapper.convert(orderRepository.findAllByDateGreaterThanEqual(dateFrom));
         else if(dateTo!=null) return orderMapper.convert(orderRepository.findAllByDateIsLessThanEqual(dateTo));
-        else if(clientId!=null) return orderMapper.convert(orderRepository.findAllByClients_IdClient(Integer.parseInt(clientId)));
-        else if(employeeId!=null) return orderMapper.convert(orderRepository.findAllByEmployee_IdEmployee(Integer.parseInt(employeeId)));
+        else if(clientId!=null) return orderMapper.convert(orderRepository.findAllByClients(Integer.parseInt(clientId)));
+        else if(employeeId!=null) return orderMapper.convert(orderRepository.findAllByEmployee(Integer.parseInt(employeeId)));
         return  orderMapper.convert(orderRepository.findAll());
     }
 

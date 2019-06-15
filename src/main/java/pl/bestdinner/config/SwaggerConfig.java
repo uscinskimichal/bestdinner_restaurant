@@ -1,4 +1,4 @@
-package pl.bestdinner.swagger;
+package pl.bestdinner.config;
 
 
 import org.springframework.context.annotation.Bean;
