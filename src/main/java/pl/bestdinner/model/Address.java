@@ -14,7 +14,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "address_id")
-    private int idAddress;
+    private Long idAddress;
 
     @Column(name = "city")
     private String city;
@@ -25,8 +25,8 @@ public class Address {
     @Column(name = "building_number")
     private String buildingNumber;
 
-    @Column(name = "appartment_number")
-    private String appartmentNumber;
+    @Column(name = "apartment_number")
+    private String apartmentNumber;
 
     @OneToMany(mappedBy = "address")
     private Set<Client> clients;

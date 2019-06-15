@@ -1,5 +1,6 @@
 package pl.bestdinner.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,9 +8,14 @@ import lombok.Setter;
 @Setter
 public class AddressOrderDto {
 
-    private int idAddress;
+    @JsonProperty("id_address")
+    private Long idAddress;
+    @JsonProperty("city")
     private String city;
+    @JsonProperty("street")
     private String street;
+    @JsonProperty("building_number")
     private String buildingNumber;
-    private String appartmentNumber;
+    @JsonProperty("apartment_number")
+    private String apartmentNumber;
 }

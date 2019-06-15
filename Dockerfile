@@ -6,7 +6,7 @@ VOLUME /tmp
 
 
 
-ADD /builds/adriangorski996/best-dinner-management-system-backend/target/BestDinner-0.0.1-SNAPSHOT.jar BestDinner.jar
+ADD /target/BestDinner-0.0.1-SNAPSHOT.jar BestDinner.jar
 ADD src/main/resources src/main/resources
 
 EXPOSE 5000

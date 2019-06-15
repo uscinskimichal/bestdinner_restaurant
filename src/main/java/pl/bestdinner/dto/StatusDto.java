@@ -6,12 +6,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RoomDto {
-
-    @JsonProperty("room_id")
+public class StatusDto {
+    @JsonProperty("status_id")
     private Long roomId;
-    @JsonProperty("width")
-    private Long width;
-    @JsonProperty("height")
-    private Long height;
+
+    @JsonProperty("name")
+    private String name;
 }

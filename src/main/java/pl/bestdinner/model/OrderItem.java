@@ -2,6 +2,7 @@ package pl.bestdinner.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.bestdinner.dto.StatusDto;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,10 +15,7 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "order_item_id")
-    private Integer orderItemId;
-
-    @Column(name = "status")
-    private String status;
+    private Long orderItemId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
@@ -33,5 +31,9 @@ public class OrderItem {
 
     @OneToMany(mappedBy = "orderItem")
     private Set<OrderItemHistory> orderItemHistorySet;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "status_id")
+    private Status status;    //TODO status do każdego dania w zamówieniu z osobna?
 
 }

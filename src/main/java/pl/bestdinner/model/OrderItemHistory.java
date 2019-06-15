@@ -14,14 +14,13 @@ public class OrderItemHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "order_item_history_id")
-    private Integer orderItemHistoryId;
+    private Long orderItemHistoryId;
 
     @Column(name="date")
     private LocalDateTime date;
 
     @Column(name = "status")
     private String status;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_item_id")

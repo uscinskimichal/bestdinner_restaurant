@@ -1,5 +1,6 @@
 package pl.bestdinner.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +11,12 @@ import java.util.List;
 @Setter
 public class WarehouseOrderDto {
 
-    private Integer warehouseOrderId;
+    @JsonProperty("warehouse_order_id")
+    private Long warehouseOrderId;
+    @JsonProperty("date")
     private LocalDateTime date;
+    @JsonProperty("warehouse_order_items")
     private List<WarehouseOrderItemDto> warehouseOrderItems;
+    @JsonProperty("ordering_person")
     private EmployeeDto orderingPerson;
 }

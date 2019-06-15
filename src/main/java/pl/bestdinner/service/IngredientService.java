@@ -29,22 +29,22 @@ public class IngredientService {
     @Transactional
     public IngredientDto create(IngredientDto in) {
         Ingredient ingredient = ingredientMapper.convert(in);
-        ingredient.setIngredientId(0);
+        ingredient.setIngredientId(0L);
         ingredientRepository.save(ingredient);
         return ingredientMapper.convert(ingredient);
     }
 
-    public void delete(Integer ingredientId) {
+    public void delete(Long ingredientId) {
         Ingredient ingredient = ingredientRepository.findById(ingredientId).orElseThrow(NoSuchElementException::new);
         ingredientRepository.delete(ingredient);
     }
 
-    public IngredientDto get(Integer ingredientId) {
+    public IngredientDto get(Long ingredientId) {
         Ingredient ingredient = ingredientRepository.findById(ingredientId).orElseThrow(NoSuchElementException::new);
         return ingredientMapper.convert(ingredient);
     }
 
-    public IngredientDto update(IngredientDto ingredientDto, Integer ingredientId) {
+    public IngredientDto update(IngredientDto ingredientDto, Long ingredientId) {
         Ingredient ingredient = ingredientMapper.convert(ingredientDto);
         ingredient.setIngredientId(ingredientId);
         ingredientRepository.save(ingredient);

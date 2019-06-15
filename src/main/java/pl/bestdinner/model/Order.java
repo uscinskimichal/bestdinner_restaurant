@@ -19,10 +19,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "order_id")
-    private Integer orderId;
-
-    @Column(name = "status")
-    private String status;
+    private Long orderId;
 
     @Column(name = "date")
     private Date date;
@@ -53,5 +50,9 @@ public class Order {
 
     @ManyToMany(mappedBy = "orders")
     private List<Client> clients;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "status_id")
+    private Status status;
 
 }

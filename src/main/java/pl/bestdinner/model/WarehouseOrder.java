@@ -15,7 +15,7 @@ public class WarehouseOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "warehouse_order_id")
-    private Integer warehouseOrderId;
+    private Long warehouseOrderId;
 
 
     @Column(name = "date")

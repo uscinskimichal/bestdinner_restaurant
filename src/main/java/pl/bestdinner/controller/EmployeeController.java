@@ -29,19 +29,19 @@ public class EmployeeController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity delete(@PathVariable("id") Integer id){
+    public ResponseEntity delete(@PathVariable("id") Long id){
         employeeService.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<EmployeeDto> get(@PathVariable("id") Integer id){
+    public ResponseEntity<EmployeeDto> get(@PathVariable("id") Long id){
         return new ResponseEntity<>(employeeService.get(id), HttpStatus.OK);
     }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<EmployeeDto> update(@RequestBody EmployeeDto requestBody,
-                                                      @PathVariable("id") Integer id){
+                                                      @PathVariable("id") Long id){
         return new ResponseEntity<>(employeeService.update(requestBody, id), HttpStatus.OK);
     }
 

@@ -1,12 +1,16 @@
 start transaction;
 
 delete from address;
-insert into address (address_id, appartment_number, building_number, city, street) values
-    (1, 14, 24, 'Prószków', 'Laskowa'),
+insert into address (address_id, apartment_number, building_number, city, street) values
+    (1, 14, 24, 'Pruszków', 'Laskowa'),
     (2, 6, 67, 'Rzeszów', 'Piękna'),
     (3, 134, 11, 'Baranów', 'Stankiewicza'),
     (4, 34, 236, 'Łódź', 'Piotrowska'),
     (5, 7, 184, 'Kraków', 'Bracka');
+
+delete from measurement_unit;
+insert into measurement_unit (measurement_unit_id, name, must_be_integer) values
+    (1, 'sztuka', 1);
 
 delete from client;
 insert into client (client_id, name, last_name, login, email, password, address_id) values
@@ -18,15 +22,15 @@ insert into client (client_id, name, last_name, login, email, password, address_
     (6, 'Wiesław', 'Kiński', 'kinskiwies', 'wiesio@wp.pl', 'admin1', 3);
 
 delete from ingredient;
-insert into ingredient (ingredient_id, client_price, is_sold_to_client, measurement_unit, name, warehouse_price, warehouse_quantity)
+insert into ingredient (ingredient_id, client_price, is_sold_to_client, measurement_unit_id, name, warehouse_price, warehouse_quantity)
 values
-    (1, 10, 0, 'g', 'mąka', 13, 10000),
-    (2, 29, 0, 'ml', 'woda', 12, 100000),
-    (3, 13, 0, 'g', 'jajka', 12, 10000),
-    (4, 16, 0, 'ml', 'przecier pomidorowy', 12, 10000),
-    (5, 12, 1, 'g', 'ser', 17, 10000),
-    (6, 18, 0, 'g', 'szynka', 23, 10000),
-    (7, 29, 0, 'g', 'ananas', 12, 10000);
+    (1, 10, 0, 1, 'mąka', 13, 10000),
+    (2, 29, 0, 1, 'woda', 12, 100000),
+    (3, 13, 0, 1, 'jajka', 12, 10000),
+    (4, 16, 0, 1, 'przecier pomidorowy', 12, 10000),
+    (5, 12, 1, 1, 'ser', 17, 10000),
+    (6, 18, 0, 1, 'szynka', 23, 10000),
+    (7, 29, 0, 1, 'ananas', 12, 10000);
 
 delete from dish;
 insert into dish (dish_id, name, price) values
@@ -66,7 +70,7 @@ insert into rooms (room_id, width, height) values
     (4, 100, 300);
 
 delete from tables;
-insert into tables (table_id, width, height, x, y, status, name, room_id) values
+insert into tables (table_id, width, height, x, y, occupied, name, room_id) values
     (1, 2, 2, 10, 10, 0, 'd2', 1),
     (2, 3, 3, 10, 18, 0, 'ad', 2),
     (3, 2, 3, 15, 10, 0, 'ed', 3),
@@ -79,8 +83,8 @@ insert into employee (employee_id, name, last_name, login, email, password, role
     (3, 'Jerzy', 'Donigiewicz', 'diggy', 'diggy@wp.pl', 'admin1', 'menadżer');
 
 delete from orders;
-insert into orders (order_id, comment, date, status, type, address_id, employee_id, table_id) values
-    (1, 'na cienkim', '2019-06-11', 'wtrakcie', 'namiejscu', 1, 2, 2),
-    (2, 'na grubym', '2019-06-12', 'wtrakcie', 'nawynos', 2, 3, 4);
+insert into orders (order_id, comment, date, status_id, type, address_id, employee_id, table_id) values
+    (1, 'na cienkim', '2019-06-11', null, 'namiejscu', 1, 2, 2),
+    (2, 'na grubym', '2019-06-12', null, 'nawynos', 2, 3, 4);
 
 commit;

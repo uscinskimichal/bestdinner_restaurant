@@ -2,15 +2,14 @@ package pl.bestdinner.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import pl.bestdinner.model.Client;
+import org.springframework.stereotype.Repository;
 import pl.bestdinner.model.Order;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.List;
 
-public interface OrderRepository extends JpaRepository<Order,Integer> {
+@Repository
+public interface OrderRepository extends JpaRepository<Order,Long> {
 
     List<Order> findAll();
     List<Order> findAllByStatus(String status);
@@ -20,9 +19,9 @@ public interface OrderRepository extends JpaRepository<Order,Integer> {
 
 
     @Query("Select o from orders o JOIN o.employee e where e.idEmployee=?1")
-    List<Order> findAllByEmployee_IdEmployee(int idEmployee);
+    List<Order> findAllByEmployee(int idEmployee);
 
     @Query("Select o from orders o JOIN o.clients c where c.idClient = ?1")
-    List<Order> findAllByClients_IdClient(int id);
+    List<Order> findAllByClients(int id);
 
 }

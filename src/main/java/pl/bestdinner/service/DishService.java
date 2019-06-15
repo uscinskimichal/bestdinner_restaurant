@@ -30,22 +30,22 @@ public class DishService {
     @Transactional
     public DishDto create(DishDto in) {
         Dish dish = dishMapper.convert(in);
-        dish.setIdDish(0);
+        dish.setIdDish(0L);
         dishRepository.save(dish);
         return dishMapper.convert(dish);
     }
 
-    public void delete(Integer dishId) {
+    public void delete(Long dishId) {
         Dish dish = dishRepository.findById(dishId).orElseThrow(NoSuchElementException::new);
         dishRepository.delete(dish);
     }
 
-    public DishDto get(Integer dishId) {
+    public DishDto get(Long dishId) {
         Dish dish = dishRepository.findById(dishId).orElseThrow(NoSuchElementException::new);
         return dishMapper.convert(dish);
     }
 
-    public DishDto update(DishDto clientDto, Integer dishId) {
+    public DishDto update(DishDto clientDto, Long dishId) {
         Dish dish = dishMapper.convert(clientDto);
         dish.setIdDish(dishId);
         dishRepository.save(dish);

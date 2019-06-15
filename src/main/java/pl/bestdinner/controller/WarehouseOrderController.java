@@ -31,19 +31,19 @@ public class WarehouseOrderController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity delete(@PathVariable("id") Integer warehouseOrderId){
+    public ResponseEntity delete(@PathVariable("id") Long warehouseOrderId){
         service.delete(warehouseOrderId);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<WarehouseOrderDto> get(@PathVariable("id") Integer id){
+    public ResponseEntity<WarehouseOrderDto> get(@PathVariable("id") Long id){
         return new ResponseEntity<>(service.get(id), HttpStatus.OK);
     }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<WarehouseOrderDto> update(@RequestBody WarehouseOrderDto requestBody,
-                                          @PathVariable("id") Integer id){
+                                          @PathVariable("id") Long id){
         return new ResponseEntity<>(service.update(requestBody, id), HttpStatus.OK);
     }
 

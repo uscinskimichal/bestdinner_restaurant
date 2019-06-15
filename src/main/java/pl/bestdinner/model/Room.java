@@ -15,13 +15,13 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "room_id")
-    private Integer roomId;
+    private Long roomId;
 
     @Column(name = "width")
-    private Integer width;
+    private Long width;
 
     @Column(name = "height")
-    private Integer height;
+    private Long height;
 
     @OneToMany(mappedBy = "room")
     private Set<Table> tables;

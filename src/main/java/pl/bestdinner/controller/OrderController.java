@@ -23,15 +23,17 @@ public class OrderController {
     }
 
 
-    @GetMapping(produces = "application/json;charset=UTF-8") // można dorzucić  produces, żeby jawnie ustawić kodowanie
+    //TODO Co to jest? Skąd dev używający API ma wiedzieć jak to działa?
+    @GetMapping(produces = "application/json;charset=UTF-8")
     public ResponseEntity<List<OrderDto>> getAll(
             @RequestParam (required = false) String status,
             @RequestParam (required = false) String clientId,
             @RequestParam (required = false) String employeeId,
             @RequestParam (required = false) Date dateFrom,
             @RequestParam (required = false) Date dateTo,
-            @RequestParam (required = false) String type
-    ) {
+            @RequestParam (required = false) String type) {
+
+
         return new ResponseEntity<>( service.getAll(status,clientId,employeeId,dateFrom,dateTo,type), HttpStatus.OK);
     }
 
@@ -41,19 +43,19 @@ public class OrderController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity delete(@PathVariable("id") Integer orderId){
+    public ResponseEntity delete(@PathVariable("id") Long orderId){
         service.delete(orderId);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<OrderDto> get(@PathVariable("id") Integer id){
+    public ResponseEntity<OrderDto> get(@PathVariable("id") Long id){
         return new ResponseEntity<>(service.get(id), HttpStatus.OK);
     }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<OrderDto> update(@RequestBody OrderDto requestBody,
-                                            @PathVariable("id") Integer id){
+                                            @PathVariable("id") Long id){
         return new ResponseEntity<>(service.update(requestBody, id), HttpStatus.OK);
     }
 

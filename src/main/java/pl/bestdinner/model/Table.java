@@ -15,22 +15,22 @@ public class Table {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "table_id")
-    private Integer tableId;
+    private Long tableId;
 
     @Column(name = "x")
-    private Integer x;
+    private Long x;
 
     @Column(name = "y")
-    private Integer y;
+    private Long y;
 
     @Column(name = "width")
-    private Integer width;
+    private Long width;
 
     @Column(name = "height")
-    private Integer height;
+    private Long height;
 
-    @Column(name = "status")
-    private Integer status;
+    @Column(name = "occupied")
+    private Boolean occupied; //TODO status stołu
 
     @Column(name = "name")
     private String name;
