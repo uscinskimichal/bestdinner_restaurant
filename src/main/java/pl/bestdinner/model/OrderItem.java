@@ -33,7 +33,7 @@ public class OrderItem {
     private Set<OrderItemHistory> orderItemHistorySet;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dish_status_id")
-    private DishStatus status;
+    @JoinColumn(name = "status_id")
+    private Status status;    //TODO status do każdego dania w zamówieniu z osobna?
 
 }
