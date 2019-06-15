@@ -6,9 +6,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class StatusDto {
-    @JsonProperty("status_id")
-    private Long statusId;
+public class DishStatusDTO {
+    @JsonProperty("dish_status_id")
+    private Long dishStatusId;
 
     @JsonProperty("name")
     private String name;

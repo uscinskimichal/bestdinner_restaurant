@@ -8,17 +8,17 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Entity(name = "status")
-public class Status {
+@Entity(name = "dish_status")
+public class DishStatus {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "status_id")
-    private Long statusId;
+    @Column(name = "dish_status_id")
+    private Long dishStatusId;
 
     @Column(name = "name")
     private String name;
 
     @OneToMany(mappedBy = "status")
-    private Set<Order> orders;
+    private Set<OrderItem> orderItems;
 }

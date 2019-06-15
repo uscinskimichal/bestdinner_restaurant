@@ -4,14 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 public class TableDto {
 
-    @JsonProperty("id_table")
-    private Long idTable;
+    @JsonProperty("table_id")
+    private Long tableId;
     @JsonProperty("x")
     private Long x;
     @JsonProperty("y")
@@ -24,8 +22,8 @@ public class TableDto {
     private Boolean occupied; //TODO co to są statusy stolików
     @JsonProperty("name")
     private String  name;
-    @JsonProperty("orders")
-    private List<OrderDto> orders;
+    /*@JsonProperty("orders")
+    private List<OrderDto> orders;*/
     @JsonProperty("room")
     private RoomDto room;
 }
