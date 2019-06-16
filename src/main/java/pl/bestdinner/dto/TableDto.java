@@ -10,8 +10,8 @@ import java.util.List;
 @Setter
 public class TableDto {
 
-    @JsonProperty("id_table")
-    private Long idTable;
+    @JsonProperty("table_id")
+    private Long tableId;
     @JsonProperty("x")
     private Long x;
     @JsonProperty("y")
@@ -26,6 +26,4 @@ public class TableDto {
     private String  name;
     @JsonProperty("orders")
     private List<OrderDto> orders;
-    @JsonProperty("room")
-    private RoomDto room;
 }
