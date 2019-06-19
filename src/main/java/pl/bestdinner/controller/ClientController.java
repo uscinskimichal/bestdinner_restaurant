@@ -51,7 +51,7 @@ public class ClientController {
         return new ResponseEntity<>(service.get(id), HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/{id}", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<ClientDto> update(@RequestBody ClientDto requestBody,
                                                   @PathVariable("id") Long id){
         return new ResponseEntity<>(service.update(requestBody, id), HttpStatus.OK);
