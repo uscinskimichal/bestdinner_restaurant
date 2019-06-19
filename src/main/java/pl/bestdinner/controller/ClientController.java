@@ -30,7 +30,6 @@ public class ClientController {
                 .build(), HttpStatus.OK);
     }*/
 
-
     @GetMapping(produces = "application/json;charset=UTF-8") // można dorzucić  produces, żeby jawnie ustawić kodowanie
     public ResponseEntity<List<ClientDto>> getAll() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
@@ -57,6 +56,13 @@ public class ClientController {
                                                   @PathVariable("id") Long id){
         return new ResponseEntity<>(service.update(requestBody, id), HttpStatus.OK);
     }
+
+    @GetMapping(produces = "application/json;charset=UTF-8" , params = { "login", "password" })
+    public ResponseEntity<ClientDto> get(@RequestParam(value="login") String login,
+                                         @RequestParam(value="password") String password){
+        return new ResponseEntity<>(service.get(login,password), HttpStatus.OK);
+    }
+
 
 
 }

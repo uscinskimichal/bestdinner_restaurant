@@ -12,7 +12,7 @@ public class ClientDto {
     @JsonProperty("id_client")
     private Long idClient;
     @JsonProperty("first_name")
-    private String firstName;
+    private String name;
     @JsonProperty("last_name")
     private String lastName;
     @JsonProperty("login")
