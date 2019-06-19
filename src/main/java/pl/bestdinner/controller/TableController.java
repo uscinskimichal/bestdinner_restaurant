@@ -39,7 +39,7 @@ public class TableController {
         return new ResponseEntity<>(tableService.get(id), HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/{id}", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<TableDto> update(@RequestBody TableDto tableDto, @PathVariable("id") Long id) {
         return new ResponseEntity<>(tableService.update(tableDto, id), HttpStatus.OK);
     }

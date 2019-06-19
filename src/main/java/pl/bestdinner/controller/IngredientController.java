@@ -42,7 +42,7 @@ public class IngredientController {
         return new ResponseEntity<>(service.get(id), HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/{id}", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<IngredientDto> update(@RequestBody IngredientDto requestBody,
                                                   @PathVariable("id") Long id){
         return new ResponseEntity<>(service.update(requestBody, id), HttpStatus.OK);

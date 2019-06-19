@@ -39,7 +39,7 @@ public class EmployeeController {
         return new ResponseEntity<>(employeeService.get(id), HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/{id}", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<EmployeeDto> update(@RequestBody EmployeeDto requestBody,
                                                       @PathVariable("id") Long id){
         return new ResponseEntity<>(employeeService.update(requestBody, id), HttpStatus.OK);
