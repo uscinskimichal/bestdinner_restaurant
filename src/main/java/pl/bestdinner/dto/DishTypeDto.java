@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class DishTypeDto {
 
-    @JsonProperty("dishType_id")
+    @JsonProperty("dish_type_id")
     private Long dishTypeId;
 
     @JsonProperty("name")
