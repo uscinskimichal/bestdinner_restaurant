@@ -14,7 +14,7 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     List<Order> findAll();
     List<Order> findAllByStatus(String status);
     List<Order> findAllByType(String type);
-    List<Order> findAllByDateGreaterThanEqual(Date date);
+    List<Order> findAllByDateGreaterThan(Date date);
     List<Order> findAllByDateIsLessThanEqual(Date date);
 
 

@@ -34,6 +34,9 @@ public class Dish {
     @OneToMany(mappedBy = "dish")
     private Set<ChangedDish> changedDishSet;
 
-    //TODO słownik na typy dan (picie itd)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dishType_id")
+    private DishType dishType;
+
 
 }
