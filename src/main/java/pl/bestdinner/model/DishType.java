@@ -14,13 +14,13 @@ public class DishType {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "dishType_id")
+    @Column(name = "dish_type_id")
     private Long dishTypeId;
 
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "dishType")
+    @OneToMany(mappedBy = "dish_type")
     private Set<Dish> dishSet;
 
 }
