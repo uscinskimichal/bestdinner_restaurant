@@ -33,11 +33,11 @@ values
     (7, 29, 0, 1, 'ananas', 12, 10000);
 
 delete from dish;
-insert into dish (dish_id, name, price) values
-    (1, 'pizza', 12),
-    (2, 'hawajska dla kazdego', 33),
-    (3, 'caprichosa', 25),
-    (4, 'margherita', 20);
+insert into dish (dish_id, name, price, dish_type_id) values
+    (1, 'pizza', 12, 1),
+    (2, 'hawajska dla kazdego', 33, 1),
+    (3, 'caprichosa', 25, 2),
+    (4, 'margherita', 20, 1);
 
 delete from dish_ingredient;
 insert into dish_ingredient (dish_ingredient_id, quantity, dish_id, ingredient_id) values
@@ -86,5 +86,11 @@ delete from orders;
 insert into orders (order_id, comment, date, status_id, type, address_id, employee_id, table_id) values
     (1, 'na cienkim', '2019-06-11', null, 'namiejscu', 1, 2, 2),
     (2, 'na grubym', '2019-06-12', null, 'nawynos', 2, 3, 4);
+
+delete from dish_type;
+insert into dish_type (dish_type_id, name) values
+    (1,	Napój),
+    (2,	Pizza);
+
 
 commit;
