@@ -5,10 +5,16 @@ LABEL maintainer="adriangorski996@gmail.com"
 VOLUME /tmp
 
 
-
-ADD /target/BestDinner-0.0.1-SNAPSHOT.jar BestDinner.jar
-ADD src/main/resources src/main/resources
-
 EXPOSE 5000
 
-ENTRYPOINT ["java","-jar","BestDinner.jar"]
+
+ARG JAR_FILE=target/BestDinner-0.0.1-SNAPSHOT.jar
+ARG CONFIG=src/main/resources
+
+# Add the application's jar to the container
+ADD ${JAR_FILE} BestDinner.jar
+ADD ${CONFIG} src/main/resources
+
+
+# Run the jar file 
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/BestDinner.jar"]
