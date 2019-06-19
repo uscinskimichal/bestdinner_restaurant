@@ -50,6 +50,11 @@ public class ClientService {
         return clientMapper.convert(client);
     }
 
+    public ClientDto get(String login, String password) {
+        Client client = clientRepository.findByLoginEqualsAndPasswordEquals(login,password);
+        return clientMapper.convert(client);
+    }
+
     public ClientDto update(ClientDto clientDto, Long clientId) {
         Client client = clientMapper.convert(clientDto);
         client.setIdClient(clientId);

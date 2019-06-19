@@ -16,5 +16,5 @@ public class ChangedDishDto {
     @JsonProperty("dish")
     private DishDto dish;
     @JsonProperty("changed_dish_ingredient")
-    private List<ChangedDishIngredientDto> changedDishIngredient;
+    private List<ChangedDishIngredientDto> changedDishIngredientSet;
 }

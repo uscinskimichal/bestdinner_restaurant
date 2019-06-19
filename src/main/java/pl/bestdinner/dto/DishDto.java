@@ -12,6 +12,8 @@ public class DishDto {
 
     @JsonProperty("id_dish")
     private Long idDish;
+    @JsonProperty("dish_type")
+    private DishTypeDto dishType;
     @JsonProperty("name")
     private String name;
     @JsonProperty("price")
