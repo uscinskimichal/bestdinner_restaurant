@@ -10,13 +10,13 @@ import lombok.Setter;
 @Builder
 public class AddressClientDto {
     @JsonProperty("address_id")
-    private Long addressId;
+    private Long idAddress;
     @JsonProperty("city")
     private String city;
     @JsonProperty("street")
     private String street;
-    @JsonProperty("street_number")
-    private String streetNumber;
+    @JsonProperty("building_number")
+    private String buildingNumber;
     @JsonProperty("apartment_number")
     private String apartmentNumber;
 
