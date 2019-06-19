@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long> {
     List<Client> findAll();
+    Client findByLoginEqualsAndPasswordEquals(String login, String password);
 }
