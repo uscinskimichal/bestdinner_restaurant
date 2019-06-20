@@ -46,6 +46,7 @@ deploy:
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
     - ssh-add <(echo "$SSH_PRIVATE_KEY")
-    - ssh -o StrictHostKeyChecking=no ubuntu@34.247.92.93 'sudo docker kill app && sudo docker rm app && sudo docker rmi registry.gitlab.com/adriangorski996/best-dinner-management-system-backend && sudo docker run --name=app -p 80:5000 -d registry.gitlab.com/adriangorski996/best-dinner-management-system-backend'
+#    - ssh -o StrictHostKeyChecking=no ubuntu@34.247.92.93 'sudo docker kill app && sudo docker rm app && sudo docker rmi registry.gitlab.com/adriangorski996/best-dinner-management-system-backend && sudo docker run --name=app -p 80:5000 -d registry.gitlab.com/adriangorski996/best-dinner-management-system-backend'
+    - ssh -o StrictHostKeyChecking=no ubuntu@34.247.92.93 'sudo ~/run.sh'
   only:
     - develop
