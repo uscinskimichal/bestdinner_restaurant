@@ -1,5 +1,33 @@
 start transaction;
 
+ALTER DATABASE best CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+ALTER TABLE best.address CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.changed_dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.changed_dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.client CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.client_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.dish_status CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.dish_type CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.employee CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.measurement_unit CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.order_history CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.order_item CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.order_item_history CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.orders CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.rooms CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.status CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.table_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.tables CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.tables_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.warehouse_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.warehouse_order_item CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
 delete from address;
 insert into address (address_id, apartment_number, building_number, city, street) values
     (1, 14, 24, 'Pruszków', 'Laskowa'),
@@ -33,7 +61,7 @@ values
     (7, 29, 0, 1, 'ananas', 12, 10000);
 
 delete from dish;
-insert into dish (dish_id, name, price, dish_type_id) values
+insert into dish (dish_id, name, price, dishType_id) values
     (1, 'pizza', 12, 1),
     (2, 'hawajska dla kazdego', 33, 1),
     (3, 'caprichosa', 25, 2),
@@ -88,9 +116,10 @@ insert into orders (order_id, comment, date, status_id, type, address_id, employ
     (2, 'na grubym', '2019-06-12', null, 'nawynos', 2, 3, 4);
 
 delete from dish_type;
-insert into dish_type (dish_type_id, name) values
-    (1,	Napój),
-    (2,	Pizza);
+insert into dish_type (dishType_id, name) values
+    (1,	'Napój'),
+    (2,	'Pizza');
 
+-- SELECT CONCAT('ALTER TABLE ',TABLE_SCHEMA,'.',TABLE_NAME,' CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;') FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'best';
 
 commit;
