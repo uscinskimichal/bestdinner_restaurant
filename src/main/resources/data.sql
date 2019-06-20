@@ -21,9 +21,7 @@ ALTER TABLE best.order_item_history CONVERT TO CHARACTER SET utf8 COLLATE utf8_g
 ALTER TABLE best.orders CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.rooms CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.status CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.table_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.tables CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.tables_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.warehouse_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.warehouse_order_item CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 
@@ -119,6 +117,81 @@ delete from dish_type;
 insert into dish_type (dishType_id, name) values
     (1,	'Napój'),
     (2,	'Pizza');
+
+delete from warehouse_order;
+insert into warehouse_order(warehouse_order_id, date, employee_id) values
+    (1, null, 1),
+    (2, null, 1),
+    (3, null, 1);
+
+delete from warehouse_order_item;
+insert into warehouse_order_item(quantity, ingredient_id, warehouse_order_id) values
+    (null, 1, 1),
+    (null, 2, 2),
+    (null, 2, 1),
+    (null, 3, 1);
+
+delete from status;
+insert into status(status_id, name) values
+    (1, 'Złożone'),
+    (2, 'Przyjęto do realizacji'),
+    (3, 'W realizacji'),
+    (4, 'Zrealizowane'),
+    (5, 'Dostarczone do stolika'),
+    (6, 'Gotowe do odbioru'),
+    (7, 'W drodze'),
+    (8, 'Dostarczone do klienta');
+
+delete from order_item_history;
+insert into order_item_history(date, status, employee_id, order_item_id) values
+(null, 1, 1, 1),
+(null, 1, 1, 2),
+(null, 1, 2, 1);
+
+delete from order_item;
+insert into order_item (changed_dish_id, dish_id, order_id, status_id) VALUES
+(1, null, 1, 3),
+(2, null, 2, 3),
+(3, null, 3, 3),
+(1, null, 1, 3),
+(null, 1, 1, 3),
+(null, 2, 2, 3),
+(null, 3, 3, 3),
+(null, 1, 1, 3),
+(null, 1, 1, 3);
+
+delete from order_history;
+insert into order_history (date, status, employee_id, order_id) VALUES
+(null, 1, 1, 1),
+(null, 1, 1, 2),
+(null, 1, 2, 2),
+(null, 1, 1, 1);
+
+delete from dish_status;
+insert into dish_status (dish_status_id, name) VALUES
+(1, 'Super'),
+(2, 'Słabo');
+
+delete from client_order;
+insert into client_order (client_id, order_id) VALUES
+(1, 1),
+(2, 1),
+(3, 2);
+
+delete from changed_dish_ingredient;
+insert into changed_dish_ingredient (changed_dish_ingredient_id, quantity, changed_dish_id, ingredient_id) VALUES
+(1, 10, 1, 1),
+(2, 10, 1, 1),
+(3, 10, 2, 1),
+(4, 10, 3, 2),
+(5, 10, 2, 1);
+
+delete from changed_dish;
+insert into changed_dish (changed_dish_id, dish_id) VALUES
+(1, 1),
+(2, 1),
+(3, 2);
+
 
 -- SELECT CONCAT('ALTER TABLE ',TABLE_SCHEMA,'.',TABLE_NAME,' CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;') FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'best';
 
