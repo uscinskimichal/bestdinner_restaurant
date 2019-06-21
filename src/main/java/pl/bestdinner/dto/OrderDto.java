@@ -19,7 +19,7 @@ public class OrderDto {
     @JsonProperty("status")
     private StatusDto status;
     @JsonProperty("date")
-    private LocalDate date;
+    private LocalDateTime date;
     @JsonProperty("employee")
     private EmployeeOrderDto employee;
     @JsonProperty("type")
