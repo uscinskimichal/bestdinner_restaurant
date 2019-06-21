@@ -10,7 +10,6 @@ ALTER TABLE best.client CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.client_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.dish_status CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.dish_type CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.employee CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -39,13 +38,13 @@ insert into measurement_unit (measurement_unit_id, name, must_be_integer) values
     (1, 'sztuka', 1);
 
 delete from client;
-insert into client (client_id, name, last_name, login, email, password, address_id) values
-    (1, 'Jan', 'Rokita', 'janrok', 'janekroki@wp.pl', 'haslo123', 2),
-    (2, 'Anna', 'Warmińska', 'aniaw', 'aniaw20@o2.pl', 'admin1', 4),
-    (3, 'Janusz', 'Pastor', 'pastorianus', 'pastorianusz@wp.pl', 'haslo123', 2),
-    (4, 'Borys', 'Marny', 'mamabo', 'mamabo@wp.pl', 'haslo123', 5),
-    (5, 'Martyna', 'Szyc', 'szyc', 'szyc@o2.pl', 'admin1', 1),
-    (6, 'Wiesław', 'Kiński', 'kinskiwies', 'wiesio@wp.pl', 'admin1', 3);
+insert into client (client_id, name, last_name, login, email, password, address_id, balance) values
+    (1, 'Jan', 'Rokita', 'janrok', 'janekroki@wp.pl', 'haslo123', 2, 10.50),
+    (2, 'Anna', 'Warmińska', 'aniaw', 'aniaw20@o2.pl', 'admin1', 4, 20.50),
+    (3, 'Janusz', 'Pastor', 'pastorianus', 'pastorianusz@wp.pl', 'haslo123', 2, 20.50),
+    (4, 'Borys', 'Marny', 'mamabo', 'mamabo@wp.pl', 'haslo123', 5, 20.50),
+    (5, 'Martyna', 'Szyc', 'szyc', 'szyc@o2.pl', 'admin1', 1, 20.50),
+    (6, 'Wiesław', 'Kiński', 'kinskiwies', 'wiesio@wp.pl', 'admin1', 3, 20.50);
 
 delete from ingredient;
 insert into ingredient (ingredient_id, client_price, is_sold_to_client, measurement_unit_id, name, warehouse_price, warehouse_quantity)
@@ -110,8 +109,8 @@ insert into employee (employee_id, name, last_name, login, email, password, role
 
 delete from orders;
 insert into orders (order_id, comment, date, status_id, type, address_id, employee_id, table_id) values
-    (1, 'na cienkim', '2019-06-11', null, 'namiejscu', 1, 2, 2),
-    (2, 'na grubym', '2019-06-12', null, 'nawynos', 2, 3, 4);
+    (1, 'na cienkim', '2019-06-11 00:00:01', 2, 'namiejscu', 1, 2, 2),
+    (2, 'na grubym', '2019-06-12 00:00:01', 2, 'nawynos', 2, 3, 4);
 
 delete from dish_type;
 insert into dish_type (dishType_id, name) values
@@ -166,11 +165,6 @@ insert into order_history (date, status, employee_id, order_id) VALUES
 (null, 1, 1, 2),
 (null, 1, 2, 2),
 (null, 1, 1, 1);
-
-delete from dish_status;
-insert into dish_status (dish_status_id, name) VALUES
-(1, 'Super'),
-(2, 'Słabo');
 
 delete from client_order;
 insert into client_order (client_id, order_id) VALUES

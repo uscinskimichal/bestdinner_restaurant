@@ -16,7 +16,7 @@ public class WarehouseOrderDto {
     @JsonProperty("date")
     private LocalDateTime date;
     @JsonProperty("warehouse_order_items")
-    private List<WarehouseOrderItemDto> warehouseOrderItems;
+    private List<WarehouseOrderItemDto> warehouseOrderItem;
     @JsonProperty("ordering_person")
     private EmployeeDto orderingPerson;
 }
