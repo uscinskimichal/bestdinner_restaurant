@@ -1,32 +1,64 @@
 image: docker:latest
 
+
+services:
+  - docker:dind
+
 stages:
   - build
+  - test
+  - docker-build
   - deploy
 
 build:
+  image: maven:3-jdk-8
   stage: build
-  image: maven:3.6.1-jdk-8
+  script: "mvn package"
+  artifacts:
+    paths:
+      - target/*.jar
+
+variables:
+  SONAR_URL: "http://ec2-34-253-85-39.eu-west-1.compute.amazonaws.com"
+  SONAR_LOGIN: "admin"
+  SONAR_PASSWORD: "admin"
+
+sonarqube_master_job:
+  stage: test
+  image: maven:3.3.9-jdk-8-alpine
   script:
-    - mvn package
-    - echo "BUILD SUCCESSFULLY DEV - DEVELOP"
+    - mvn --batch-mode verify sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.password=$SONAR_PASSWORD
+
+
+docker-build:
+  stage: docker-build
+  dependencies:
+    - build
+  script:
+    - echo "$REGISTRY_PASSWORD" | docker login registry.gitlab.com -u "$REGISTRY_USER" --password-stdin
+    - docker build -t registry.gitlab.com/adriangorski996/best-dinner-management-system-backend .
+    - docker push registry.gitlab.com/adriangorski996/best-dinner-management-system-backend
+    - echo "DEPLOYED SUCCESSFULLY - DEVELOP"
   environment:
     name: dev
   only:
+    - develop
 
-#services:
-#  - docker:dind
 
-#deploy:
-#  stage: deploy
-#  dependencies:
-#    - build
-#  script:
-#    - echo "$REGISTRY_PASSWORD" | docker login registry.gitlab.com -u "$REGISTRY_USER" --password-stdin
-#    - docker build -t registry.gitlab.com/adriangorski996/best-dinner-management-system-backend .
-#    - docker push registry.gitlab.com/adriangorski996/best-dinner-management-system-backend
-#    - echo "DEPLOYED SUCCESSFULLY - DEVELOP"
-#  environment:
-#    name: dev
-#  only:
-#    - develop
+deploy:
+  image: ubuntu:latest
+  stage: deploy
+  environment: 
+    name: Staging
+    url: 34.247.92.93
+  before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - mkdir -p ~/.ssh
+  - eval $(ssh-agent -s)
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+#    - ssh -o StrictHostKeyChecking=no ubuntu@34.247.92.93 'sudo docker kill app && sudo docker rm app && sudo docker rmi registry.gitlab.com/adriangorski996/best-dinner-management-system-backend && sudo docker run --name=app -p 80:5000 -d registry.gitlab.com/adriangorski996/best-dinner-management-system-backend'
+    - ssh -o StrictHostKeyChecking=no ubuntu@34.247.92.93 'sudo ~/run.sh'
+  only:
+    - develop

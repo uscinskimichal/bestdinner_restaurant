@@ -24,6 +24,6 @@ public class TableDto {
     private Boolean occupied; //TODO co to są statusy stolików
     @JsonProperty("name")
     private String  name;
-    @JsonProperty("orders")
-    private List<OrderDto> orders;
+    /*@JsonProperty("orders")
+    private List<OrderDto> orders;*/
 }
