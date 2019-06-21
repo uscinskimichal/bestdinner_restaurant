@@ -8,12 +8,12 @@ import lombok.Setter;
 @Setter
 public class EmployeeDto {
 
-    @JsonProperty("dish_ingredient_id")
+    @JsonProperty("id_employee")
     private Long idEmployee;
-    @JsonProperty("name")
+    @JsonProperty("first_name")
     private String name;
     @JsonProperty("last_name")
-    private String last_name;
+    private String lastName;
     @JsonProperty("login")
     private String login;
     @JsonProperty("email")
