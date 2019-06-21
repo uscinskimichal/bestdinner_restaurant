@@ -109,8 +109,8 @@ insert into employee (employee_id, name, last_name, login, email, password, role
 
 delete from orders;
 insert into orders (order_id, comment, date, status_id, type, address_id, employee_id, table_id) values
-    (1, 'na cienkim', '2019-06-11 00:00:01', null, 'namiejscu', 1, 2, 2),
-    (2, 'na grubym', '2019-06-12 00:00:01', null, 'nawynos', 2, 3, 4);
+    (1, 'na cienkim', '2019-06-11 00:00:01', 2, 'namiejscu', 1, 2, 2),
+    (2, 'na grubym', '2019-06-12 00:00:01', 2, 'nawynos', 2, 3, 4);
 
 delete from dish_type;
 insert into dish_type (dishType_id, name) values
