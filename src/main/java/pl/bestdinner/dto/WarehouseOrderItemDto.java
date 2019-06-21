@@ -9,7 +9,7 @@ import lombok.Setter;
 public class WarehouseOrderItemDto {
 
     @JsonProperty("ware_house_order_item_id")
-    private Long wareHouseOrderItemId;
+    private Long tableId;
     @JsonProperty("quantity")
     private Long quantity;
     @JsonProperty("ingredient")
