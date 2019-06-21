@@ -24,16 +24,13 @@ public class OrderService {
         this.orderMapper = orderMapper;
     }
 
-
-
-    public List<OrderDto> getAll(String status, String clientId, String employeeId, Date dateFrom, Date dateTo, String type) {
-        if(status!=null) return orderMapper.convert(orderRepository.findAllByStatus(status));
-        else if(type!=null) return orderMapper.convert(orderRepository.findAllByType(type));
-        else if(dateFrom!=null) return orderMapper.convert(orderRepository.findAllByDateGreaterThan(dateFrom));
-        else if(dateTo!=null) return orderMapper.convert(orderRepository.findAllByDateIsLessThanEqual(dateTo));
-        else if(clientId!=null) return orderMapper.convert(orderRepository.findAllByClients(Integer.parseInt(clientId)));
-        else if(employeeId!=null) return orderMapper.convert(orderRepository.findAllByEmployee(Integer.parseInt(employeeId)));
-        return  orderMapper.convert(orderRepository.findAll());
+    public List<OrderDto> getAll(String paramStatus,
+                                  Integer paramClientId ,
+                                  Integer paramEmployeeId,
+                                  LocalDateTime paramDateFrom,
+                                  LocalDateTime paramDateTo,
+                                  String paramType){
+        return orderMapper.convert(orderRepository.findAllWithParameters(paramStatus, paramClientId , paramEmployeeId, paramDateFrom, paramDateTo, paramType));
     }
 
     @Transactional
