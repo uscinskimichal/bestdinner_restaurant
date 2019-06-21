@@ -9,7 +9,7 @@ import pl.bestdinner.service.WarehouseOrderService;
 import java.util.List;
 
 @RestController()
-@RequestMapping("/warehouseOrders")// nie ma potrzebny dawać  przy każdej metodzie tej samej częsści URL, tworzymy hierarchię zasobów
+@RequestMapping("/warehouse_orders")// nie ma potrzebny dawać  przy każdej metodzie tej samej częsści URL, tworzymy hierarchię zasobów
 public class WarehouseOrderController {
 
 
