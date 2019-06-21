@@ -15,4 +15,6 @@ public class IngredientDto {
     private MeasurementUnitDto measurementUnit;
     @JsonProperty("warehouse_price")
     private Double warehousePrice;
+    @JsonProperty("client_price")
+    private Double clientPrice;
 }
