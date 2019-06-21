@@ -1,6 +1,6 @@
 package pl.bestdinner.model;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
@@ -18,7 +18,7 @@ public class Order {
   private Long orderId;
 
   @Column(name = "date")
-  private Timestamp date;
+  private LocalDateTime date;
 
   @Column(name = "type")
   private String type;
