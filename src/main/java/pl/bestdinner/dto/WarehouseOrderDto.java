@@ -18,5 +18,5 @@ public class WarehouseOrderDto {
     @JsonProperty("warehouse_order_items")
     private List<WarehouseOrderItemDto> warehouseOrderItem;
     @JsonProperty("ordering_person")
-    private EmployeeDto orderingPerson;
+    private EmployeeDto employee;
 }
