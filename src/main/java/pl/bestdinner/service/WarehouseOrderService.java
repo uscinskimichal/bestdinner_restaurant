@@ -8,6 +8,7 @@ import pl.bestdinner.mapper.WarehouseOrderMapper;
 import pl.bestdinner.model.WarehouseOrder;
 import pl.bestdinner.repositories.WarehouseOrderRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -22,9 +23,8 @@ public class WarehouseOrderService {
     }
 
 
-    @Transactional
-    public List<WarehouseOrderDto> getAll() {
-        return warehouseOrderMapper.convert(warehouseOrderRepository.findAll());
+    public List<WarehouseOrderDto> getAll(Integer paramEmployeeId, LocalDateTime paramDateFrom, LocalDateTime paramDateTo) {
+        return warehouseOrderMapper.convert(warehouseOrderRepository.findAllWithParameters(paramEmployeeId, paramDateFrom, paramDateTo));
     }
 
     @Transactional
