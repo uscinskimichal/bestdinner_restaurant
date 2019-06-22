@@ -2,7 +2,7 @@ start transaction;
 
 ALTER DATABASE best CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-
+ALTER TABLE best.restaurant_account CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.address CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.changed_dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE best.changed_dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -35,7 +35,13 @@ insert into address (address_id, apartment_number, building_number, city, street
 
 delete from measurement_unit;
 insert into measurement_unit (measurement_unit_id, name, must_be_integer) values
-    (1, 'sztuka', 1);
+    (1, 'sztuka', 0),
+    (2, 'gram', 1),
+    (3, 'kilogram', 1),
+    (4, 'mililitr', 1),
+    (5, 'litr', 1),
+    (6, 'porcja', 0),
+    (7, 'szczypta', 0);
 
 delete from client;
 insert into client (client_id, name, last_name, login, email, password, address_id, balance) values
@@ -105,30 +111,60 @@ delete from employee;
 insert into employee (employee_id, name, last_name, login, email, password, role) values
     (1, 'Julian', 'Szczery', 'julszcze', 'julo@wp.pl', 'admin1', 'kelner'),
     (2, 'Zenon', 'Martyniuk', 'zenek', 'zenio@o2.pl', 'haslo123', 'kelner'),
-    (3, 'Jerzy', 'Donigiewicz', 'diggy', 'diggy@wp.pl', 'admin1', 'menadżer');
+    (3, 'Jerzy', 'Donigiewicz', 'diggy', 'diggy@wp.pl', 'admin1', 'menadżer'),
+    (4, 'Karol', 'Karolak', 'kkarol', 'krll@gmail.com', 'qwerty', 'kucharz'),
+    (5, 'Jan', 'Nowak', 'jowak', 'jnowak@o2.pl', 'kawoj', 'kucharz'),
+    (6, 'Tomasz', 'Szybki', 'szomasz', 'szomasz@wp.pl', 'tom123', 'dostawca'),
+    (7, 'Bogdan', 'Szmyks', 'bogusxx', 'bog24@gmail.com', 'bogdan1955', 'kucharz'),
+    (8, 'Paweł', 'Tępak', 'pętak', 'pawel.tepak@poczta.onet.pl', 'paw77', 'dostawca'),
+    (9, 'Halina', 'Grzyb', 'halynka', 'halinaxd@o2.pl', 'qazWSX123', 'dostawca');
+
 
 delete from orders;
 insert into orders (order_id, comment, date, status_id, type, address_id, employee_id, table_id) values
-    (1, 'na cienkim', '2019-06-11 00:00:01', 2, 'namiejscu', 1, 2, 2),
-    (2, 'na grubym', '2019-06-12 00:00:01', 2, 'nawynos', 2, 3, 4);
+    (1, 'na cienkim', '2019-06-11 00:00:01', 2, 'wlokalu', 1, 2, 1),
+    (2, 'na grubym', '2019-06-12 16:00:01', 2, 'zdostawa', 2, 3, null),
+    (3, 'do 30 minut', '2015-07-21 10:40:01', 6, 'zdostawa', 3, 4, null),
+    (4, 'bez sosu', '2012-12-13 21:07:01', 6, 'zdostawa', 3, 5, null),
+    (5, '-ser +pieczarki', '2019-06-21 22:24:01', 2, 'wlokalu', 1, 5, 4),
+    (6, null, '2017-09-11 14:24:01', 3, 'wlokalu', 1, 3, 4),
+    (7, null, '2019-11-11 11:11:01', 4, 'zdostawa', 1, 7, null),
+    (8, 'na cienkim', '2016-09-30 20:21:01', 5, 'wlokalu', 2, 6, 1),
+    (9, 'na grubym', '2019-01-11 13:35:01', 7, 'wlokalu', 3, 9, 3);
 
 delete from dish_type;
 insert into dish_type (dishType_id, name) values
     (1,	'Napój'),
-    (2,	'Pizza');
+    (2,	'Pizza'),
+    (3,	'Makaron'),
+    (4,	'Kanapka'),
+    (5,	'Zapiekanka')
+    ;
 
 delete from warehouse_order;
 insert into warehouse_order(warehouse_order_id, date, employee_id) values
-    (1, null, 1),
-    (2, null, 1),
-    (3, null, 1);
+    (1, '2017-09-11 14:24:01', 1),
+    (2, '2019-11-11 11:11:01', 4),
+    (3, '2019-06-11 00:00:01', 5),
+    (4, '2015-07-21 10:40:01', 2),
+    (5, '2019-01-11 13:35:01', 6);
 
 delete from warehouse_order_item;
-insert into warehouse_order_item(quantity, ingredient_id, warehouse_order_id) values
-    (null, 1, 1),
-    (null, 2, 2),
-    (null, 2, 1),
-    (null, 3, 1);
+insert into warehouse_order_item(warehouse_order_item_id,quantity, ingredient_id, warehouse_order_id) values
+    (1,11, 14, 1),
+    (2,42, 12, 1),
+    (3,21, 2, 2),
+    (4,53, 1, 3),
+    (5,1, 5, 4),
+    (6,52, 6, 4),
+    (7,15, 7, 4),
+    (8,76, 9, 5),
+    (9,22, 11, 5),
+    (10,42, 17, 2),
+    (11,54, 18, 2),
+    (12,65, 19, 3),
+    (13,18, 5, 3),
+    (14,7, 4, 1);
 
 delete from status;
 insert into status(status_id, name) values
@@ -143,9 +179,9 @@ insert into status(status_id, name) values
 
 delete from order_item_history;
 insert into order_item_history(date, status, employee_id, order_item_id) values
-(null, 1, 1, 1),
-(null, 1, 1, 2),
-(null, 1, 2, 1);
+('2012-01-11 13:35:01', 1, 1, 1),
+('2019-12-21 21:53:01', 1, 1, 2),
+('2019-08-11 18:42:11', 1, 2, 1);
 
 delete from order_item;
 insert into order_item (changed_dish_id, dish_id, order_id, status_id) VALUES
@@ -161,10 +197,10 @@ insert into order_item (changed_dish_id, dish_id, order_id, status_id) VALUES
 
 delete from order_history;
 insert into order_history (date, status, employee_id, order_id) VALUES
-(null, 1, 1, 1),
-(null, 1, 1, 2),
-(null, 1, 2, 2),
-(null, 1, 1, 1);
+('2015-11-21 17:54:01', 1, 1, 1),
+('2014-10-11 11:24:01', 1, 1, 2),
+('2013-09-01 15:35:01', 1, 2, 2),
+('2012-08-15 19:09:01', 1, 1, 1);
 
 delete from client_order;
 insert into client_order (client_id, order_id) VALUES
@@ -186,7 +222,9 @@ insert into changed_dish (changed_dish_id, dish_id) VALUES
 (2, 1),
 (3, 2);
 
-
+delete from restaurant_account;
+insert into restaurant_account (restaurant_id, balance) VALUES
+(1,100000);
 -- SELECT CONCAT('ALTER TABLE ',TABLE_SCHEMA,'.',TABLE_NAME,' CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;') FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'best';
 
 commit;
