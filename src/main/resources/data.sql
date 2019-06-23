@@ -120,7 +120,11 @@ insert into orders (order_id, comment, date, status_id, type, address_id, employ
     (6, null, '2017-09-11 14:24:01', 3, 'wlokalu', 1, 3, 4),
     (7, null, '2019-11-11 11:11:01', 4, 'zdostawa', 1, 7, null),
     (8, 'na cienkim', '2016-09-30 20:21:01', 5, 'wlokalu', 2, 6, 1),
-    (9, 'na grubym', '2019-01-11 13:35:01', 7, 'wlokalu', 3, 9, 3);
+    (9, 'na grubym', '2019-01-11 13:35:01', 7, 'wlokalu', 3, 9, 3),
+    (10, 'na cienkim', '2019-06-20 00:00:01', 4, 'zdostawa', 1, null, null),
+    (11, 'na grubym', '2019-06-21 16:00:01', 4, 'zdostawa', 2, null, null),
+    (12, 'do 30 minut', '2015-06-22 10:40:01', 4, 'zdostawa', 3, null, null),
+    (13, 'bez sosu', '2012-12-23 23:07:01', 4, 'zdostawa', 3, null, null);
 
 
 delete from warehouse_order;

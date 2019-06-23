@@ -11,7 +11,7 @@ public class WarehouseOrderItemDto {
     @JsonProperty("ware_house_order_item_id")
     private Long tableId;
     @JsonProperty("quantity")
-    private Long quantity;
+    private Double quantity;
     @JsonProperty("ingredient")
     private IngredientDto ingredient;
 }
