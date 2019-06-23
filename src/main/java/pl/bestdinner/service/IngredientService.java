@@ -30,8 +30,8 @@ public class IngredientService {
     public IngredientDto create(IngredientDto in) {
         Ingredient ingredient = ingredientMapper.convert(in);
         ingredient.setIngredientId(0L);
-        ingredientRepository.save(ingredient);
-        return ingredientMapper.convert(ingredient);
+        Ingredient returnedIngredient = ingredientRepository.save(ingredient);
+        return ingredientMapper.convert(returnedIngredient);
     }
 
     public void delete(Long ingredientId) {
