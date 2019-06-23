@@ -31,6 +31,7 @@ public class WarehouseOrderService {
     public WarehouseOrderDto create(WarehouseOrderDto in) {
         WarehouseOrder warehouseOrder = warehouseOrderMapper.convert(in);
         warehouseOrder.setWarehouseOrderId(0L);
+        warehouseOrder.getWarehouseOrderItem().forEach(a -> a.setWarehouseOrder(warehouseOrder));
         warehouseOrderRepository.save(warehouseOrder);
         return warehouseOrderMapper.convert(warehouseOrder);
     }
