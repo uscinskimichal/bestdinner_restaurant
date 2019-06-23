@@ -50,8 +50,8 @@ values
     (3, 13, 0, 1, 'jajka', 12, 10000),
     (4, 16, 0, 1, 'przecier pomidorowy', 12, 10000),
     (5, 12, 1, 1, 'ser', 17, 10000),
-    (6, 18, 0, 1, 'szynka', 23, 10000),
-    (7, 29, 0, 1, 'ananas', 12, 10000);
+    (6, 18, 1, 1, 'szynka', 23, 10000),
+    (7, 29, 1, 1, 'ananas', 12, 10000);
 
 delete from dish;
 insert into dish (dish_id, name, price, dishType_id) values
@@ -114,8 +114,8 @@ delete from orders;
 insert into orders (order_id, comment, date, status_id, type, address_id, employee_id, table_id) values
     (1, 'na cienkim', '2019-06-11 00:00:01', 2, 'wlokalu', 1, 2, 1),
     (2, 'na grubym', '2019-06-12 16:00:01', 2, 'zdostawa', 2, 3, null),
-    (3, 'do 30 minut', '2015-07-21 10:40:01', 6, 'zdostawa', 3, null, null),
-    (4, 'bez sosu', '2012-12-13 21:07:01', 6, 'zdostawa', 3, null, null),
+    (3, 'do 30 minut', '2015-07-21 10:40:01', 4, 'zdostawa', 3, null, null),
+    (4, 'bez sosu', '2012-12-13 21:07:01', 4, 'zdostawa', 3, null, null),
     (5, '-ser +pieczarki', '2019-06-21 22:24:01', 2, 'wlokalu', 1, 5, 4),
     (6, null, '2017-09-11 14:24:01', 3, 'wlokalu', 1, 3, 4),
     (7, null, '2019-11-11 11:11:01', 4, 'zdostawa', 1, 7, null),
@@ -156,15 +156,15 @@ insert into order_item_history(date, status, employee_id, order_item_id) values
 
 delete from order_item;
 insert into order_item (changed_dish_id, dish_id, order_id, status_id) VALUES
-(1, null, 1, 3),
-(2, null, 2, 3),
-(3, null, 3, 3),
-(1, null, 1, 3),
-(null, 1, 1, 3),
-(null, 2, 2, 3),
-(null, 3, 3, 3),
-(null, 1, 1, 3),
-(null, 1, 1, 3);
+(1, null, 1, 2),
+(2, null, 2, 2),
+(3, null, 3, 2),
+(1, null, 1, 2),
+(null, 1, 1, 2),
+(null, 2, 2, 2),
+(null, 3, 3, 2),
+(null, 1, 1, 2),
+(null, 1, 1, 2);
 
 delete from order_history;
 insert into order_history (date, status, employee_id, order_id) VALUES
