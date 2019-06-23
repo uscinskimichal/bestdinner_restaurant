@@ -31,6 +31,10 @@ public class DishService {
     public DishDto create(DishDto in) {
         Dish dish = dishMapper.convert(in);
         dish.setIdDish(0L);
+        dish.getDishIngredientSet().forEach(a -> {
+            a.setDish(dish);
+            a.setDishIngredientId(0L);
+        });
         dishRepository.save(dish);
         return dishMapper.convert(dish);
     }
