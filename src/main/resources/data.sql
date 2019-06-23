@@ -169,11 +169,11 @@ insert into warehouse_order_item(warehouse_order_item_id,quantity, ingredient_id
 delete from status;
 insert into status(status_id, name) values
     (1, 'Złożone'),
-    (2, 'Przyjęto do realizacji'),
-    (3, 'W realizacji'),
-    (4, 'Zrealizowane'),
-    (5, 'Dostarczone do stolika'),
-    (6, 'Gotowe do odbioru'),
+    (2, 'W realizacji'),
+    (3, 'Zrealizowane'),
+    (4, 'Dostarczone do stolika'),
+    (5, 'Gotowe do odbioru'),
+    (6, 'Odebrane przez klienta'),
     (7, 'W drodze'),
     (8, 'Dostarczone do klienta');
 
