@@ -50,8 +50,8 @@ public class OrderService {
                 });
             }
         });
-        orderRepository.save(order);
-        return orderMapper.convert(order);
+        Order returnedOrder = orderRepository.save(order);
+        return orderMapper.convert(returnedOrder);
     }
 
     public void delete(Long orderId) {

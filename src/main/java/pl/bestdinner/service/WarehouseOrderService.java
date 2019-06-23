@@ -32,8 +32,8 @@ public class WarehouseOrderService {
         WarehouseOrder warehouseOrder = warehouseOrderMapper.convert(in);
         warehouseOrder.setWarehouseOrderId(0L);
         warehouseOrder.getWarehouseOrderItem().forEach(a -> a.setWarehouseOrder(warehouseOrder));
-        warehouseOrderRepository.save(warehouseOrder);
-        return warehouseOrderMapper.convert(warehouseOrder);
+        WarehouseOrder returnedWarehouseOrder = warehouseOrderRepository.save(warehouseOrder);
+        return warehouseOrderMapper.convert(returnedWarehouseOrder);
     }
 
     public void delete(Long warehouseOrderId) {

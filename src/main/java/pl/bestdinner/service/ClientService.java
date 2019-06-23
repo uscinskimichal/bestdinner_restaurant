@@ -35,8 +35,8 @@ public class ClientService {
     public ClientDto create(ClientDto in) {
         Client client = clientMapper.convert(in);
         client.setIdClient(0L);
-        clientRepository.save(client);
-        return clientMapper.convert(client);
+        Client returnedClient = clientRepository.save(client);
+        return clientMapper.convert(returnedClient);
     }
 
     public void delete(Long clientId) {
