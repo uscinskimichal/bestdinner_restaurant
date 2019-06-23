@@ -25,7 +25,7 @@ public class OrderItem {
     @JoinColumn(name = "dish_id")
     private Dish dish;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "changed_dish_id")
     private ChangedDish changedDish;
 

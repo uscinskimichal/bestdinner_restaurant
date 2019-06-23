@@ -35,12 +35,12 @@ public class Client {
     @Column(name = "balance")
     private Double balance;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "client_order",
             joinColumns = {@JoinColumn(name = "order_id")},
