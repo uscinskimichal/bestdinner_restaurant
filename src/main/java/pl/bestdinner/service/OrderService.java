@@ -3,13 +3,12 @@ package pl.bestdinner.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 import pl.bestdinner.dto.OrderDto;
 import pl.bestdinner.mapper.OrderMapper;
+import pl.bestdinner.model.ChangedDish;
 import pl.bestdinner.model.Order;
 import pl.bestdinner.repositories.OrderRepository;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -25,18 +24,32 @@ public class OrderService {
     }
 
     public List<OrderDto> getAll(String paramStatus,
-                                  Integer paramClientId ,
-                                  Integer paramEmployeeId,
-                                  LocalDateTime paramDateFrom,
-                                  LocalDateTime paramDateTo,
-                                  String paramType){
-        return orderMapper.convert(orderRepository.findAllWithParameters(paramStatus, paramClientId , paramEmployeeId, paramDateFrom, paramDateTo, paramType));
+                                 Integer paramClientId,
+                                 Integer paramEmployeeId,
+                                 LocalDateTime paramDateFrom,
+                                 LocalDateTime paramDateTo,
+                                 String paramType) {
+        return orderMapper.convert(orderRepository.findAllWithParameters(paramStatus, paramClientId, paramEmployeeId, paramDateFrom, paramDateTo, paramType));
     }
 
     @Transactional
     public OrderDto create(OrderDto in) {
         Order order = orderMapper.convert(in);
         order.setOrderId(0L);
+        order.getClients().forEach(q -> q.setIdClient(q.getIdClient()));
+        order.getOrderItems().forEach(a -> {
+            a.setOrderItemId(0L);
+            a.setOrder(order);
+            ChangedDish changedDish = a.getChangedDish();
+
+            if (changedDish != null) {
+                changedDish.setChangedDishId(0L);
+                changedDish.getChangedDishIngredientSet().forEach(t -> {
+                    t.setDishIngredientId(0L);
+                    t.setChangedDish(changedDish);
+                });
+            }
+        });
         orderRepository.save(order);
         return orderMapper.convert(order);
     }

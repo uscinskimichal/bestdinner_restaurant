@@ -21,7 +21,7 @@ public class Dish {
     @Column(name = "name")
     private String name;
 
-    @Digits(integer=5, fraction=2)
+    @Digits(integer = 5, fraction = 2)
     @Column(name = "price")
     private BigDecimal price;
 
