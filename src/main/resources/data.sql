@@ -151,18 +151,18 @@ insert into warehouse_order(warehouse_order_id, date, employee_id) values
 
 delete from warehouse_order_item;
 insert into warehouse_order_item(warehouse_order_item_id,quantity, ingredient_id, warehouse_order_id) values
-    (1,11, 14, 1),
-    (2,42, 12, 1),
+    (1,11, 5, 1),
+    (2,42, 6, 1),
     (3,21, 2, 2),
     (4,53, 1, 3),
     (5,1, 5, 4),
     (6,52, 6, 4),
     (7,15, 7, 4),
-    (8,76, 9, 5),
-    (9,22, 11, 5),
-    (10,42, 17, 2),
-    (11,54, 18, 2),
-    (12,65, 19, 3),
+    (8,76, 5, 5),
+    (9,22, 4, 5),
+    (10,42, 4, 2),
+    (11,54, 2, 2),
+    (12,65, 1, 3),
     (13,18, 5, 3),
     (14,7, 4, 1);
 
