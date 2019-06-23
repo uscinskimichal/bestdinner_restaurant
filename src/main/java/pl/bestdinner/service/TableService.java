@@ -30,8 +30,8 @@ public class TableService {
     public TableDto create(TableDto in) {
         Table table = tableMapper.convert(in);
         table.setTableId(0L);
-        tableRepository.save(table);
-        return tableMapper.convert(table);
+        Table returnedTable = tableRepository.save(table);
+        return tableMapper.convert(returnedTable);
     }
 
     @Transactional

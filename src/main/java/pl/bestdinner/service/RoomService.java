@@ -31,8 +31,8 @@ public class RoomService {
     public RoomDto create(RoomDto in) {
         Room room = roomMapper.convert(in);
         room.setRoomId(0L);
-        roomRepository.save(room);
-        return roomMapper.convert(room);
+        Room returnedRoom = roomRepository.save(room);
+        return roomMapper.convert(returnedRoom);
     }
 
     public void delete(Long roomId) {

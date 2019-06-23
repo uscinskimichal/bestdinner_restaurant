@@ -31,8 +31,8 @@ public class OrderItemService {
     public OrderItemDto create(OrderItemDto in) {
         OrderItem orderItem = orderItemMapper.convert(in);
         orderItem.setOrderItemId(0L);
-        orderItemRepository.save(orderItem);
-        return orderItemMapper.convert(orderItem);
+        OrderItem returnedOrderItem = orderItemRepository.save(orderItem);
+        return orderItemMapper.convert(returnedOrderItem);
     }
 
     public void delete(Long orderItemId) {

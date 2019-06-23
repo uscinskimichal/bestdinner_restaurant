@@ -35,8 +35,8 @@ public class DishService {
             a.setDish(dish);
             a.setDishIngredientId(0L);
         });
-        dishRepository.save(dish);
-        return dishMapper.convert(dish);
+        Dish returnedDish = dishRepository.save(dish);
+        return dishMapper.convert(returnedDish);
     }
 
     public void delete(Long dishId) {

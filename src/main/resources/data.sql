@@ -236,4 +236,49 @@ insert into dish_type (dishType_id, name) values
 (7,	'Desery'),
 (8,	'Napoje');
 
+
+
+-- MATEUSZA:
+insert into orders (order_id, comment, date, status_id, type, address_id, employee_id, table_id) values
+(101, 'na cienkim', '2019-06-11', 1, 'zdostawa', 1, 2, 2),
+(102, 'na grubym', '2019-06-12', 4, 'wlokalu', 2, 3, 4),
+(103, 'silnemu pic sie chce', '2019-06-12', 6, 'zdostawa', 2, 3, 4),
+(104, 'lej te cole', '2019-06-12', 4, 'wlokalu', 2, 3, 4);
+
+insert into order_item (changed_dish_id, dish_id, order_id, status_id) VALUES
+(1, null, 101, 2),
+(2, null, 102, 2),
+(3, null, 103, 2),
+(1, null, 101, 2),
+(null, 1, 101, 2),
+(null, 2, 102, 2),
+(null, 3, 103, 3),
+(null, 1, 101, 3),
+(null, 4, 103, 3),
+(null, 1, 101, 3),
+(null, 2, 102, 3),
+(null, 3, 103, 3),
+(null, 2, 104, 3),
+(null, 1, 104, 3);
+
+
+insert into warehouse_order(warehouse_order_id, date, employee_id) values
+(101, '2019-06-01', 1),
+(102, '2019-06-12', 1),
+(103, '2019-06-15', 1),
+(104, '2019-06-16', 1),
+(105, '2019-06-18', 1);
+
+insert into warehouse_order_item(quantity, ingredient_id, warehouse_order_id) values
+(10, 1, 101),
+(12, 2, 103),
+(14, 4, 102),
+(5,  5, 102),
+(34, 1, 103),
+(12, 3, 104),
+(32, 2, 105),
+(12, 4, 101),
+(51, 5, 105),
+(18, 1, 102);
+
 commit;

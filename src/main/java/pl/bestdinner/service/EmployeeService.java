@@ -31,8 +31,8 @@ public class EmployeeService {
     public EmployeeDto create(EmployeeDto in) {
         Employee employee = employeeMapper.convert(in);
         employee.setIdEmployee(0L);
-        employeeRepository.save(employee);
-        return employeeMapper.convert(employee);
+        Employee returnedEmployee = employeeRepository.save(employee);
+        return employeeMapper.convert(returnedEmployee);
     }
 
     public void delete(Long employeeId) {
