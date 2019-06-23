@@ -1,5 +1,6 @@
 package pl.bestdinner.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,6 +26,6 @@ public class WarehouseOrder {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @OneToMany(mappedBy = "warehouseOrder")
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "warehouseOrder")
     private Set<WarehouseOrderItem> warehouseOrderItem;
 }
