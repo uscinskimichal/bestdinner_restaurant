@@ -1,28 +1,28 @@
 start transaction;
 
-ALTER DATABASE best CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER DATABASE best CHARACTER SET utf8 COLLATE utf8_polish_ci;
 
-ALTER TABLE best.restaurant_account CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.address CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.changed_dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.changed_dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.client CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.client_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.dish_type CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.employee CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.measurement_unit CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.order_history CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.order_item CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.order_item_history CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.orders CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.rooms CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.status CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.tables CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.warehouse_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.warehouse_order_item CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.restaurant_account CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.address CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.changed_dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.changed_dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.client CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.client_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.dish_type CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.employee CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.measurement_unit CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.order_history CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.order_item CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.order_item_history CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.orders CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.rooms CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.status CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.tables CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.warehouse_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.warehouse_order_item CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
 
 
 delete from address;
@@ -32,16 +32,6 @@ insert into address (address_id, apartment_number, building_number, city, street
     (3, 134, 11, 'Baranów', 'Stankiewicza'),
     (4, 34, 236, 'Łódź', 'Piotrowska'),
     (5, 7, 184, 'Kraków', 'Bracka');
-
-delete from measurement_unit;
-insert into measurement_unit (measurement_unit_id, name, must_be_integer) values
-    (1, 'sztuka', 0),
-    (2, 'gram', 1),
-    (3, 'kilogram', 1),
-    (4, 'mililitr', 1),
-    (5, 'litr', 1),
-    (6, 'porcja', 0),
-    (7, 'szczypta', 0);
 
 delete from client;
 insert into client (client_id, name, last_name, login, email, password, address_id, balance) values
@@ -60,8 +50,8 @@ values
     (3, 13, 0, 1, 'jajka', 12, 10000),
     (4, 16, 0, 1, 'przecier pomidorowy', 12, 10000),
     (5, 12, 1, 1, 'ser', 17, 10000),
-    (6, 18, 0, 1, 'szynka', 23, 10000),
-    (7, 29, 0, 1, 'ananas', 12, 10000);
+    (6, 18, 1, 1, 'szynka', 23, 10000),
+    (7, 29, 1, 1, 'ananas', 12, 10000);
 
 delete from dish;
 insert into dish (dish_id, name, price, dishType_id) values
@@ -124,22 +114,18 @@ delete from orders;
 insert into orders (order_id, comment, date, status_id, type, address_id, employee_id, table_id) values
     (1, 'na cienkim', '2019-06-11 00:00:01', 2, 'wlokalu', 1, 2, 1),
     (2, 'na grubym', '2019-06-12 16:00:01', 2, 'zdostawa', 2, 3, null),
-    (3, 'do 30 minut', '2015-07-21 10:40:01', 6, 'zdostawa', 3, 4, null),
-    (4, 'bez sosu', '2012-12-13 21:07:01', 6, 'zdostawa', 3, 5, null),
+    (3, 'do 30 minut', '2015-07-21 10:40:01', 4, 'zdostawa', 3, null, null),
+    (4, 'bez sosu', '2012-12-13 21:07:01', 4, 'zdostawa', 3, null, null),
     (5, '-ser +pieczarki', '2019-06-21 22:24:01', 2, 'wlokalu', 1, 5, 4),
     (6, null, '2017-09-11 14:24:01', 3, 'wlokalu', 1, 3, 4),
     (7, null, '2019-11-11 11:11:01', 4, 'zdostawa', 1, 7, null),
     (8, 'na cienkim', '2016-09-30 20:21:01', 5, 'wlokalu', 2, 6, 1),
-    (9, 'na grubym', '2019-01-11 13:35:01', 7, 'wlokalu', 3, 9, 3);
+    (9, 'na grubym', '2019-01-11 13:35:01', 7, 'wlokalu', 3, 9, 3),
+    (10, 'na cienkim', '2019-06-20 00:00:01', 4, 'zdostawa', 1, null, null),
+    (11, 'na grubym', '2019-06-21 16:00:01', 4, 'zdostawa', 2, null, null),
+    (12, 'do 30 minut', '2015-06-22 10:40:01', 4, 'zdostawa', 3, null, null),
+    (13, 'bez sosu', '2012-12-23 23:07:01', 4, 'zdostawa', 3, null, null);
 
-delete from dish_type;
-insert into dish_type (dishType_id, name) values
-    (1,	'Napój'),
-    (2,	'Pizza'),
-    (3,	'Makaron'),
-    (4,	'Kanapka'),
-    (5,	'Zapiekanka')
-    ;
 
 delete from warehouse_order;
 insert into warehouse_order(warehouse_order_id, date, employee_id) values
@@ -166,17 +152,6 @@ insert into warehouse_order_item(warehouse_order_item_id,quantity, ingredient_id
     (13,18, 5, 3),
     (14,7, 4, 1);
 
-delete from status;
-insert into status(status_id, name) values
-    (1, 'Złożone'),
-    (2, 'Przyjęto do realizacji'),
-    (3, 'W realizacji'),
-    (4, 'Zrealizowane'),
-    (5, 'Dostarczone do stolika'),
-    (6, 'Gotowe do odbioru'),
-    (7, 'W drodze'),
-    (8, 'Dostarczone do klienta');
-
 delete from order_item_history;
 insert into order_item_history(date, status, employee_id, order_item_id) values
 ('2012-01-11 13:35:01', 1, 1, 1),
@@ -185,15 +160,15 @@ insert into order_item_history(date, status, employee_id, order_item_id) values
 
 delete from order_item;
 insert into order_item (changed_dish_id, dish_id, order_id, status_id) VALUES
-(1, null, 1, 3),
-(2, null, 2, 3),
-(3, null, 3, 3),
-(1, null, 1, 3),
-(null, 1, 1, 3),
-(null, 2, 2, 3),
-(null, 3, 3, 3),
-(null, 1, 1, 3),
-(null, 1, 1, 3);
+(1, null, 1, 2),
+(2, null, 2, 2),
+(3, null, 3, 2),
+(1, null, 1, 2),
+(null, 1, 1, 2),
+(null, 2, 2, 2),
+(null, 3, 3, 2),
+(null, 1, 1, 2),
+(null, 1, 1, 2);
 
 delete from order_history;
 insert into order_history (date, status, employee_id, order_id) VALUES
@@ -225,6 +200,40 @@ insert into changed_dish (changed_dish_id, dish_id) VALUES
 delete from restaurant_account;
 insert into restaurant_account (restaurant_id, balance) VALUES
 (1,100000);
--- SELECT CONCAT('ALTER TABLE ',TABLE_SCHEMA,'.',TABLE_NAME,' CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;') FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'best';
+-- SELECT CONCAT('ALTER TABLE ',TABLE_SCHEMA,'.',TABLE_NAME,' CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;') FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'best';
+
+-- Słowniki:
+
+delete from measurement_unit;
+insert into measurement_unit (measurement_unit_id, name, must_be_integer) values
+(1, 'Miligram', 0),
+(2, 'Gram', 0),
+(3, 'Dekagram', 0),
+(4, 'Kilogram', 0),
+(5, 'Mililitr', 0),
+(6, 'Litr', 0),
+(7, 'Szczypta', 1);
+
+
+delete from status;
+insert into status(status_id, name) values
+(1, 'W realizacji'),
+(2, 'Zrealizowane'),
+(3, 'Dostarczone do stolika'),
+(4, 'Gotowe do odbioru'),
+(5, 'Odebrane przez klienta'),
+(6, 'W drodze'),
+(7, 'Dostarczone do klienta');
+
+delete from dish_type;
+insert into dish_type (dishType_id, name) values
+(1,	'Pizza'),
+(2,	'Przystawki'),
+(3,	'Makarony'),
+(4,	'Zupy'),
+(5,	'Sałatki'),
+(6,	'Dodatki do dań'),
+(7,	'Desery'),
+(8,	'Napoje');
 
 commit;

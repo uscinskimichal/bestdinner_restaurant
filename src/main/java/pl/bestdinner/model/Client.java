@@ -35,7 +35,7 @@ public class Client {
     @Column(name = "balance")
     private Double balance;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
