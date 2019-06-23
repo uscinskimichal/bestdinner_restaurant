@@ -1,28 +1,28 @@
 start transaction;
 
-ALTER DATABASE best CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER DATABASE best CHARACTER SET utf8 COLLATE utf8_polish_ci;
 
-ALTER TABLE best.restaurant_account CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.address CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.changed_dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.changed_dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.client CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.client_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.dish_type CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.employee CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.measurement_unit CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.order_history CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.order_item CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.order_item_history CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.orders CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.rooms CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.status CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.tables CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.warehouse_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE best.warehouse_order_item CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE best.restaurant_account CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.address CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.changed_dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.changed_dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.client CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.client_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.dish CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.dish_ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.dish_type CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.employee CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.ingredient CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.measurement_unit CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.order_history CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.order_item CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.order_item_history CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.orders CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.rooms CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.status CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.tables CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.warehouse_order CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
+ALTER TABLE best.warehouse_order_item CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;
 
 
 delete from address;
@@ -200,7 +200,7 @@ insert into changed_dish (changed_dish_id, dish_id) VALUES
 delete from restaurant_account;
 insert into restaurant_account (restaurant_id, balance) VALUES
 (1,100000);
--- SELECT CONCAT('ALTER TABLE ',TABLE_SCHEMA,'.',TABLE_NAME,' CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;') FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'best';
+-- SELECT CONCAT('ALTER TABLE ',TABLE_SCHEMA,'.',TABLE_NAME,' CONVERT TO CHARACTER SET utf8 COLLATE utf8_polish_ci;') FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'best';
 
 -- Słowniki:
 
