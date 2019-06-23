@@ -26,6 +26,6 @@ public class WarehouseOrder {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @OneToMany(cascade = CascadeType.ALL , mappedBy = "warehouseOrder")
+    @OneToMany(cascade = CascadeType.MERGE , mappedBy = "warehouseOrder")
     private Set<WarehouseOrderItem> warehouseOrderItem;
 }

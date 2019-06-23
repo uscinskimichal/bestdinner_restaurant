@@ -47,6 +47,7 @@ public class OrderItemService {
 
     public OrderItemDto update(OrderItemDto orderItemDto, Long orderItemId) {
         OrderItem orderItem = orderItemMapper.convert(orderItemDto);
+        orderItem.setOrder(orderItemRepository.findById(orderItemId).orElseThrow(NoSuchElementException::new).getOrder());
         orderItem.setOrderItemId(orderItemId);
         orderItemRepository.save(orderItem);
         return orderItemMapper.convert(orderItemRepository.findById(orderItemId).orElseThrow(NoSuchElementException::new));
