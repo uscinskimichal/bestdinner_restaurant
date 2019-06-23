@@ -28,7 +28,7 @@ public class Dish {
     @OneToMany(mappedBy = "dish")
     private Set<OrderItem> orderItems;
 
-    @OneToMany(mappedBy = "dish")
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "dish")
     private Set<DishIngredient> dishIngredientSet;
 
     @OneToMany(mappedBy = "dish")
