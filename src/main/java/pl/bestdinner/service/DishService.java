@@ -51,6 +51,7 @@ public class DishService {
 
     public DishDto update(DishDto clientDto, Long dishId) {
         Dish dish = dishMapper.convert(clientDto);
+        dish.getDishIngredientSet().forEach(a->a.setDish(dish));
         dish.setIdDish(dishId);
         dishRepository.save(dish);
         return dishMapper.convert(dishRepository.findById(dishId).orElseThrow(NoSuchElementException::new));
