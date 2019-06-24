@@ -67,7 +67,8 @@ public class OrderService {
     public OrderDto update(OrderDto orderDto, Long orderId) {
         Order order = orderMapper.convert(orderDto);
         order.setOrderId(orderId);
-        orderRepository.save(order);
+        order.getOrderItems().forEach(a->a.setOrder(order));
+        orderRepository.saveAndFlush(order);
         return orderMapper.convert(orderRepository.findById(orderId).orElseThrow(NoSuchElementException::new));
     }
 
